@@ -1,6 +1,6 @@
 # nix-home
 
-This is my `$HOME``, managed by [home-manager](https://github.com/rycee/home-manager).
+This is my `$HOME`, managed by [home-manager](https://github.com/rycee/home-manager).
 
 ## Setup
 
