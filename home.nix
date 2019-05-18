@@ -23,24 +23,30 @@ in
   home.packages = with pkgs; [
     ag
     awscli
-    google-chrome
     chromium
     file
     gdb
     git
     gnome3.dconf
+    google-chrome
     htop
     jq
     nix-review
     nmap
     pass
+    pinentry
     slack
     socat
+    tmux
+    xclip
     xsel
   ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.direnv.enable = true;
+  programs.htop.enable = true;
 
   programs.emacs = {
     enable = true;
@@ -53,12 +59,17 @@ in
   services.emacs = {
     enable = true;
   };
-  
-  # services.gpg-agent = {
-  #   enable = true;
-  #   defaultCacheTtl = 1800;
-  #   enableSshSupport = true;
-  # };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    defaultCacheTtl = 1800;
+    extraConfig = ''
+      pinentry-program ${pkgs.pinentry}/bin/pinentry
+      allow-emacs-pinentry
+      allow-loopback-pinentry
+    '';
+  };
 
   gtk = {
     enable = true;
@@ -75,7 +86,4 @@ in
       package = pkgs.adapta-gtk-theme;
     };
   };
-
-  programs.direnv.enable = true;
-  programs.htop.enable = true;  
 }
