@@ -66,7 +66,7 @@ in
     enableSshSupport = true;
     defaultCacheTtl = 1800;
     extraConfig = ''
-      pinentry-program ${pkgs.pinentry}/bin/pinentry
+      pinentry-program ${pkgs.pinentry}/bin/pinentry-curses
       allow-emacs-pinentry
       allow-loopback-pinentry
     '';
