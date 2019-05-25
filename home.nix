@@ -38,6 +38,7 @@ in
     slack
     socat
     tmux
+    unzip
     xclip
     xsel
   ];
