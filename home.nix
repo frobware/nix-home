@@ -22,6 +22,7 @@ in
     file
     gdb
     gnome3.dconf
+    google-chrome
     htop
     jq
     nix-review
