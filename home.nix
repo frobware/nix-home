@@ -15,7 +15,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    gitFull
+    gitAndTools.gitFull
     
     ag
     awscli
