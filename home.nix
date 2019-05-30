@@ -14,28 +14,20 @@ in
   nixpkgs.config.firefox.enableAdobeFlash = false;
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.chromium = {
-    proprietaryCodecs = true;
-    enablePepperPDF = true;
-    enableNacl = true;
-  };
-
   home.packages = with pkgs; [
+    gitFull
+    
     ag
     awscli
-    chromium
     file
     gdb
-    git
     gnome3.dconf
-    google-chrome
     htop
     jq
     nix-review
     nmap
     pass
     pinentry
-    slack
     socat
     tmux
     unzip
