@@ -31,6 +31,7 @@ in
     pinentry
     socat
     tmux
+    mosh
     unzip
     xclip
     xsel
