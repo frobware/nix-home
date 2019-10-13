@@ -35,6 +35,9 @@ in
     unzip
     xclip
     xsel
+    aspell
+    ispell
+    kdiff3
   ];
 
   # Let Home Manager install and manage itself.
@@ -47,7 +50,6 @@ in
     enable = true;
     extraPackages = epkgs: [
       epkgs.nix-mode
-      epkgs.magit
     ];
   };
 
