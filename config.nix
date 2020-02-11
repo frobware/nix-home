@@ -1,6 +1,5 @@
 {
+  allowBroken = false;
   allowUnfree = true;
-  firefox.enableAdobeFlash = false;
-  pulseaudio = true;
+  allowUnsupportedSystem = false;
 }
-  

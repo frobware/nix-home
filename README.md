@@ -1,11 +1,8 @@
-# nix-home
+# Installation
 
-This is my `$HOME`, managed by [home-manager](https://github.com/rycee/home-manager).
-
-## Setup
-
-```
-cd ~/.config
-git clone git@github.com:frobware/nix-home.git nixpkgs
-home-manager switch
+```shell
+$ git submodule init
+$ git submodule update
+$ ln -s `pwd` ~/.config/nixpkgs
+$ nix-env -f '<nixpkgs>' -iA home-manager
 ```
