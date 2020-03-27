@@ -265,7 +265,13 @@ in rec {
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-overlay.emacsGit;
-    extraPackages = epkgs: with epkgs; [ melpaStablePackages.emacsql-sqlite emacs-libvterm mozc pdf-tools elisp-ffi exwm ];
+    #package = pkgs.emacs-overlay.emacsGit;
+    package = pkgs.emacs;
+    extraPackages = epkgs: with epkgs; [
+      melpaStablePackages.emacsql-sqlite
+      emacs-libvterm pdf-tools
+      elisp-ffi
+      exwm
+    ];
   };
 }
