@@ -117,7 +117,8 @@ in rec {
       amke = "make";
       cat = "${pkgs.bat}/bin/bat";
       disarm-openshift-ingress-operator = "kubectl scale --replicas=0 -n openshift-ingress-operator deployment ingress-operator";
-      disarm-the-cvo = "kubectl scale deployment --replicas=0 -n openshift-cluster-version cluster-version-operator";
+      disarm-the-cvo =
+        "${pkgs.kubectl}/bin/kubectl scale deployment --replicas=0 -n openshift-cluster-version cluster-version-operator";
       dnf = "dnf --cacheonly";
       dockerclean = "dockercleanc || true && dockercleani";
       dockercleanc = "docker rm $(docker ps -a -q)";
@@ -126,19 +127,20 @@ in rec {
       dockerkillall = "docker kill $(docker ps -q)";
       e = "open-here";
       eric-le-cluster = "curl https://raw.githubusercontent.com/eparis/ssh-bastion/master/deploy/deploy.sh | bash";
-      gdb = "gdb -q";
+      gdb = "${pkgs.gdb}/bin/gdb -q";
       h = "history 10";
-      kalpine = "kubectl run -it --rm --restart=Never alpine --image=alpine sh";
-      kb = "kubectl get build --no-headers --sort-by=.metadata.creationTimestamp";
-      kcn = "kubectl config set-context $(kubectl config current-context) --namespace";
-      ke = "kubectl get events --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
-      km = "kubectl get machines --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
-      kn = "kubectl get nodes --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
+      kalpine = "${pkgs.kubectl}/bin/kubectl run -it --rm --restart=Never alpine --image=alpine sh";
+      kb = "${pkgs.kubectl}/bin/kubectl get build --no-headers --sort-by=.metadata.creationTimestamp";
+      kcn = "${pkgs.kubectl}/bin/kubectl config set-context $(kubectl config current-context) --namespace";
+      ke = "${pkgs.kubectl}/bin/kubectl get events --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
+      km = "${pkgs.kubectl}/bin/kubectl get machines --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
+      kn = "${pkgs.kubectl}/bin/kubectl get nodes --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
       ls = "ls --color=no";
       lst = "ls -trl | tail";
       mkae = "make";
       more = "less";
-      netshoot = "kubectl run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash";
+      netshoot =
+        "${pkgs.kubectl}/bin/kubectl run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash";
       nowrap = "tput rmam";
       open-here = "emacsclient -t -n .";
       rust-gdb = "rust-gdb -q";
@@ -313,10 +315,13 @@ in rec {
   home.file.".local/share/gnome-shell/extensions/tilingnome@rliang.github.com".source =
     builtins.fetchGit { url = "https://github.com/rliang/gnome-shell-extension-tilingnome.git"; };
 
+  home.file.".local/share/gnome-shell/extensions/dark-mode@lossurdo.github.com".source =
+    builtins.fetchGit { url = "https://github.com/lossurdo/gnome-shell-extension-dark-mode.git"; };
+
   dconf = {
     enable = true;
     settings = {
-      "org/gnome/shell".enabled-extensions = [ "tilingnome@rliang.github.com" ];
+      "org/gnome/shell".enabled-extensions = [ "tilingnome@rliang.github.com" "dark-mode@lossurdo.github.com" ];
       "org/gnome/desktop/interface" = {
         enable-hot-corners = false;
         cursor-blink = false;
