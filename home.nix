@@ -35,18 +35,18 @@ in rec {
 
       # Debugging tools
       pkgs.strace
-      
+
       # Fonts
       pkgs.dejavu_fonts
       pkgs.fontconfig
 
       # Grep
       pkgs.ag
-      pkgs.gnupg
       pkgs.ripgrep
+
+      pkgs.gnupg
       pkgs.zlib
 
-      # Spolling!
       pkgs.aspell
       pkgs.aspellDicts.en
       pkgs.aspellDicts.en-computers
@@ -80,8 +80,6 @@ in rec {
       pkgs.gotop
       custom-golist
 
-      #pkgs.emacs
-
       pkgs.wmctrl
     ];
 
@@ -94,8 +92,8 @@ in rec {
       PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
     };
 
-#    keyboard.options = [ "caps:ctrl_modifier" ];
-    keyboard.layout = [ "emacs2" ];
+    # keyboard.options = [ "caps:ctrl_modifier" ];
+    # keyboard.layout = [ "emacs2" ];
   };
 
   programs.direnv.enable = true;
@@ -116,9 +114,38 @@ in rec {
     enable = true;
 
     shellAliases = {
+      amke = "make";
       cat = "${pkgs.bat}/bin/bat";
+      disarm-openshift-ingress-operator = "kubectl scale --replicas=0 -n openshift-ingress-operator deployment ingress-operator";
+      disarm-the-cvo = "kubectl scale deployment --replicas=0 -n openshift-cluster-version cluster-version-operator";
+      dnf = "dnf --cacheonly";
+      dockerclean = "dockercleanc || true && dockercleani";
+      dockercleanc = "docker rm $(docker ps -a -q)";
+      dockercleandangling = "docker rmi $(docker images -q --filter 'dangling=true')";
+      dockercleani = "docker rmi $(docker images -q -f dangling=true)";
+      dockerkillall = "docker kill $(docker ps -q)";
+      e = "open-here";
+      eric-le-cluster = "curl https://raw.githubusercontent.com/eparis/ssh-bastion/master/deploy/deploy.sh | bash";
+      gdb = "gdb -q";
+      h = "history 10";
+      kalpine = "kubectl run -it --rm --restart=Never alpine --image=alpine sh";
+      kb = "kubectl get build --no-headers --sort-by=.metadata.creationTimestamp";
+      kcn = "kubectl config set-context $(kubectl config current-context) --namespace";
+      ke = "kubectl get events --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
+      km = "kubectl get machines --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
+      kn = "kubectl get nodes --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
+      ls = "ls --color=no";
+      lst = "ls -trl | tail";
+      mkae = "make";
+      more = "less";
+      netshoot = "kubectl run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash";
+      nowrap = "tput rmam";
+      open-here = "emacsclient -t -n .";
+      rust-gdb = "rust-gdb -q";
+      scale-router = "oc scale deployment/router-default -n openshift-ingress --replicas=${"1:-1"}";
+      wrap = "tput smam";
     };
-    
+
     initExtra = pkgs.lib.mkBefore ''
       source /etc/profile
     '';
@@ -213,7 +240,7 @@ in rec {
   gtk = {
     enable = true;
     font = {
-      name = "DejaVu Sans 14";
+      name = "DejaVu Sans 16";
       package = pkgs.dejavu_fonts;
     };
     iconTheme = { name = "Adwaita-dark"; };
@@ -229,7 +256,7 @@ in rec {
     "Emacs.menuBar" = false;
     "Emacs.toolBar" = false;
     "Emacs.verticalScrollBars" = false;
-    "Emacs.Font" = "DejaVu Sans Mono:size=14";
+    "Emacs.Font" = "DejaVu Sans Mono:size=16";
     "Xcursor.size" = "128";
   };
 
@@ -273,12 +300,7 @@ in rec {
     enable = true;
     #package = pkgs.emacs-overlay.emacsGit;
     package = pkgs.emacs;
-    extraPackages = epkgs: with epkgs; [
-      melpaStablePackages.emacsql-sqlite
-      emacs-libvterm pdf-tools
-      elisp-ffi
-      exwm
-    ];
+    extraPackages = epkgs: with epkgs; [ melpaStablePackages.emacsql-sqlite emacs-libvterm pdf-tools elisp-ffi exwm ];
   };
 
   home.file.".xprofile".text = ''
@@ -288,24 +310,19 @@ in rec {
     export XPROFILED
   '';
 
-  home.file.".local/share/gnome-shell/extensions/tilingnome@rliang.github.com".source = builtins.fetchGit {
-    url = "https://github.com/rliang/gnome-shell-extension-tilingnome.git";
-  };
+  home.file.".local/share/gnome-shell/extensions/tilingnome@rliang.github.com".source =
+    builtins.fetchGit { url = "https://github.com/rliang/gnome-shell-extension-tilingnome.git"; };
 
   dconf = {
     enable = true;
     settings = {
-      "org/gnome/shell".enabled-extensions = ["tilingnome@rliang.github.com"];
+      "org/gnome/shell".enabled-extensions = [ "tilingnome@rliang.github.com" ];
       "org/gnome/desktop/interface" = {
         enable-hot-corners = false;
         cursor-blink = false;
       };
-      "org/gnome/desktop/input-sources" = {
-        xkb-options = ["caps:ctrl_modifier"];
-      };
-      "org/gnome/terminal/legacy/profiles:/:0" = {
-        audible-bell = false;
-      };
+      "org/gnome/desktop/input-sources" = { xkb-options = [ "caps:ctrl_modifier" ]; };
+      "org/gnome/terminal/legacy/profiles:/:0" = { audible-bell = false; };
     };
   };
 
