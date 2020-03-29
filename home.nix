@@ -33,6 +33,9 @@ in rec {
       pkgs.niv
       pkgs.nixfmt
 
+      # Debugging tools
+      pkgs.strace
+      
       # Fonts
       pkgs.dejavu_fonts
       pkgs.fontconfig
@@ -78,6 +81,8 @@ in rec {
       custom-golist
 
       #pkgs.emacs
+
+      pkgs.wmctrl
     ];
 
     sessionVariables = {
@@ -89,7 +94,7 @@ in rec {
       PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
     };
 
-    keyboard.options = [ "caps:ctrl_modifier" ];
+#    keyboard.options = [ "caps:ctrl_modifier" ];
     keyboard.layout = [ "emacs2" ];
   };
 
@@ -119,6 +124,8 @@ in rec {
     '';
 
     bashrcExtra = pkgs.lib.mkBefore ''
+      # [ -n "$DISPLAY" ] && source $HOME/.xprofile
+
       source /etc/bashrc
 
       if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
@@ -206,7 +213,7 @@ in rec {
   gtk = {
     enable = true;
     font = {
-      name = "DejaVu Sans 18";
+      name = "DejaVu Sans 14";
       package = pkgs.dejavu_fonts;
     };
     iconTheme = { name = "Adwaita-dark"; };
@@ -222,7 +229,7 @@ in rec {
     "Emacs.menuBar" = false;
     "Emacs.toolBar" = false;
     "Emacs.verticalScrollBars" = false;
-    "Emacs.Font" = "DejaVu Sans Mono:size=18";
+    "Emacs.Font" = "DejaVu Sans Mono:size=14";
     "Xcursor.size" = "128";
   };
 
@@ -239,9 +246,8 @@ in rec {
 
   home.extraOutputsToInstall = [ "man" ];
 
-  systemd.user.startServices = true;
-
-  systemd.user.services.gpg-agent.Install.WantedBy = [ "default.target" ];
+  #systemd.user.startServices = true;
+  #systemd.user.services.gpg-agent.Install.WantedBy = [ "default.target" ];
 
   programs.tmux = {
     enable = true;
@@ -274,4 +280,37 @@ in rec {
       exwm
     ];
   };
+
+  home.file.".xprofile".text = ''
+    xset -b
+    ${pkgs.xorg.setxkbmap}/bin/setxkbmap us -option ctrl:nocaps
+    XPROFILED=1
+    export XPROFILED
+  '';
+
+  home.file.".local/share/gnome-shell/extensions/tilingnome@rliang.github.com".source = builtins.fetchGit {
+    url = "https://github.com/rliang/gnome-shell-extension-tilingnome.git";
+  };
+
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/shell".enabled-extensions = ["tilingnome@rliang.github.com"];
+      "org/gnome/desktop/interface" = {
+        enable-hot-corners = false;
+        cursor-blink = false;
+      };
+      "org/gnome/desktop/input-sources" = {
+        xkb-options = ["caps:ctrl_modifier"];
+      };
+      "org/gnome/terminal/legacy/profiles:/:0" = {
+        audible-bell = false;
+      };
+    };
+  };
+
+  # programs.gnome-terminal.profile."Legacy" = {
+  #   enable = true;
+  #   cursorShape = "ibeam";
+  # };
 }
