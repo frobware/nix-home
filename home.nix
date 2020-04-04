@@ -14,9 +14,9 @@ in rec {
     path = "./home-manager";
   };
 
-  # imports = [
-  #   ./config/terminfo.nix
-  # ];
+  imports = [
+    ./programs/bash
+  ];
   
   programs.command-not-found.enable = true;
 
@@ -140,126 +140,6 @@ in rec {
     '';
   };
 
-  programs.bash = {
-    enable = true;
-
-    shellAliases = {
-      gnome-dark-mode = "gsettings set org.gnome.desktop.interface gtk-theme \${GNOME_DARK_MODE:-Adwaita-dark}";
-      gnome-light-mode = "gsettings set org.gnome.desktop.interface gtk-theme  \${GNOME_DARK_MODE:-Adwaita-light}";
-      amke = "make";
-      cat = "${pkgs.bat}/bin/bat";
-      disarm-openshift-ingress-operator = "kubectl scale --replicas=0 -n openshift-ingress-operator deployment ingress-operator";
-      disarm-the-cvo = "${pkgs.kubectl}/bin/kubectl scale deployment --replicas=0 -n openshift-cluster-version cluster-version-operator";
-      dnf = "dnf --cacheonly";
-      dockerclean = "dockercleanc || true && dockercleani";
-      dockercleanc = "docker rm $(docker ps -a -q)";
-      dockercleandangling = "docker rmi $(docker images -q --filter 'dangling=true')";
-      dockercleani = "docker rmi $(docker images -q -f dangling=true)";
-      dockerkillall = "docker kill $(docker ps -q)";
-      e = "open-here";
-      eric-le-cluster = "curl https://raw.githubusercontent.com/eparis/ssh-bastion/master/deploy/deploy.sh | bash";
-      gdb = "${pkgs.gdb}/bin/gdb -q";
-      h = "history 10";
-      kalpine = "${pkgs.kubectl}/bin/kubectl run -it --rm --restart=Never alpine --image=alpine sh";
-      kb = "${pkgs.kubectl}/bin/kubectl get build --no-headers --sort-by=.metadata.creationTimestamp";
-      kcn = "${pkgs.kubectl}/bin/kubectl config set-context $(kubectl config current-context) --namespace";
-      ke = "${pkgs.kubectl}/bin/kubectl get events --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
-      km = "${pkgs.kubectl}/bin/kubectl get machines --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
-      kn = "${pkgs.kubectl}/bin/kubectl get nodes --no-headers --sort-by=.metadata.creationTimestamp |cat -n";
-      ls = "ls --color=no";
-      lst = "ls -trl | tail";
-      mkae = "make";
-      more = "less";
-      netshoot = "${pkgs.kubectl}/bin/kubectl run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash";
-      nowrap = "tput rmam";
-      open-here = "emacsclient -t -n .";
-      rust-gdb = "rust-gdb -q";
-      scale-router = "oc scale deployment/router-default -n openshift-ingress --replicas=${"1:-1"}";
-      wrap = "tput smam";
-    };
-
-    initExtra = pkgs.lib.mkBefore ''
-      source /etc/profile
-    '';
-
-    bashrcExtra = pkgs.lib.mkBefore ''
-      # [ -n "$DISPLAY" ] && source $HOME/.xprofile
-
-      source /etc/bashrc
-
-      if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
-      source ~/.nix-profile/etc/profile.d/nix.sh
-      fi
-
-      export GPG_TTY=$(tty)
-      if ! pgrep -x "gpg-agent" > /dev/null; then
-      ${pkgs.gnupg}/bin/gpgconf --launch gpg-agent
-      fi
-
-      export SSH_AUTH_SOCK="$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)"
-      export PATH=$HOME/.local/bin:$HOME/bin:$PATH
-    '';
-  };
-
-  programs.zsh = rec {
-    enable = true;
-
-    dotDir = ".config/zsh";
-    enableCompletion = false;
-    enableAutosuggestions = true;
-
-    defaultKeymap = "emacs";
-
-    # enableFzfCompletion = true;
-    # enableFzfGit = true;
-    # enableFzfHistory = true;
-    # enableSyntaxHighlighting = true;
-
-    history = {
-      size = 50000;
-      save = 5000000;
-      path = "${dotDir}/history";
-      ignoreDups = true;
-      share = true;
-    };
-
-    sessionVariables = {
-      ALTERNATE_EDITOR = "${pkgs.vim}/bin/vi";
-      EDITOR = "emacsclient -t -a vi";
-      VISUAL = "emacsclient -c -a vi";
-      LC_CTYPE = "en_US.UTF-8";
-      LESS = "-FRSXM";
-      PROMPT = "%m %~ $ ";
-      PROMPT_DIRTRIM = "2";
-      PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
-    };
-
-    profileExtra = ''
-      export GPG_TTY=$(tty)
-      if ! pgrep -x "gpg-agent" > /dev/null; then
-      ${pkgs.gnupg}/bin/gpgconf --launch gpg-agent
-      fi
-
-      setopt extended_glob
-
-      # Bash-like navigation
-      autoload -U select-word-style
-      select-word-style bash
-
-      setopt autocd autopushd pushdignoredups no_beep
-      bindkey -e
-    '';
-
-    initExtra = pkgs.lib.mkBefore ''
-      export SSH_AUTH_SOCK=$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)
-      if [[ $TERM == dumb || $TERM == emacs || ! -o interactive ]]; then
-      unsetopt zle
-      unset zle_bracketed_paste
-      export PS1='%m %~ $ '
-      fi
-    '';
-  };
-
   xdg = {
     enable = true;
     configHome = "${home_directory}/.config";
@@ -324,32 +204,27 @@ in rec {
     extraPackages = epkgs: with epkgs; [ melpaStablePackages.emacsql-sqlite emacs-libvterm pdf-tools elisp-ffi exwm ];
   };
 
-  home.file.".xprofile".text = ''
-    xset b off
-    ${pkgs.xorg.setxkbmap}/bin/setxkbmap us -option ctrl:nocaps
-    XPROFILED=1
-    export XPROFILED
-  '';
-
   # home.file.".local/share/gnome-shell/extensions/tilingnome@rliang.github.com".source =
   #   builtins.fetchGit { url = "https://github.com/rliang/gnome-shell-extension-tilingnome.git"; };
 
-  # home.file.".local/share/gnome-shell/extensions/dark-mode@lossurdo.github.com".source =
-  #   builtins.fetchGit { url = "https://github.com/lossurdo/gnome-shell-extension-dark-mode.git"; };
+  # home.file.".local/share/gnome-shell/extensions/dim.desktop.70@d0h0.tuta.io".source =
+  #   builtins.fetchGit { url = "https://github.com/d0h0/dim.desktop.gnome.extension.git"; };
+
+  home.file.".local/share/gnome-shell/extensions/dark-mode@lossurdo.com".source =
+    builtins.fetchGit { url = "https://github.com/lossurdo/gnome-shell-extension-dark-mode.git"; };
 
   dconf = {
     enable = true;
     settings = {
       "org/gnome/shell".enabled-extensions = [
-        "tilingnome@rliang.github.com"
-        "dark-mode@lossurdo.github.com"
+        # "tilingnome@rliang.github.com"
+        # "dark-mode@lossurdo.com"
+        "dim.desktop.70@d0h0.tuta.io"
       ];
       "org/gnome/desktop/interface" = {
         enable-hot-corners = false;
         cursor-blink = false;
         cursor-size = 96;
-        # font-name = "DejaVu Sans 14";
-        # monospace-font-name = [ "Source Code Pro Black" ];
         monospace-font-name = "Source Code Pro Semibold 14";
         text-scaling-factor = 1.25;
         enable-animations = false;
@@ -362,14 +237,6 @@ in rec {
       "org/gnome/desktop/input-sources" = { xkb-options = [ "caps:ctrl_modifier" ]; };
     };
   };
-
-  home.file.".local/share/themes/custom/gnome-shell".text = ''
-    @import url("resource:///org/gnome/theme/gnome-shell.css");
-    stage {
-      font-family: "Roboto", Sans-Serif;
-      font-size: 24pt;
-    }
-  '';
 
   programs.gnome-terminal = {
     enable = true;
@@ -385,5 +252,4 @@ in rec {
       };
     };
   };
-
 }
