@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { }, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   locale = "en_US.UTF-8";
@@ -12,6 +12,10 @@ in rec {
     path = "./home-manager";
   };
 
+  # imports = [
+  #   ./config/terminfo.nix
+  # ];
+  
   programs.command-not-found.enable = true;
 
   # This value determines the Home Manager release that your
@@ -33,7 +37,8 @@ in rec {
       pkgs.niv
       pkgs.nixfmt
 
-      # Debugging tools
+      # Development tools
+      pkgs.gnumake
       pkgs.strace
 
       # Fonts
@@ -110,15 +115,24 @@ in rec {
     config = { tabs = "8"; };
   };
 
+  programs.readline = {
+    enable = true;
+    includeSystemConfig = true;
+    extraConfig = ''
+      set bell-style none
+    '';
+  };
+
   programs.bash = {
     enable = true;
 
     shellAliases = {
+      gnome-dark-mode = "gsettings set org.gnome.desktop.interface gtk-theme \${GNOME_DARK_MODE:-Adwaita-dark}";
+      gnome-light-mode = "gsettings set org.gnome.desktop.interface gtk-theme  \${GNOME_DARK_MODE:-Adwaita-light}";
       amke = "make";
       cat = "${pkgs.bat}/bin/bat";
       disarm-openshift-ingress-operator = "kubectl scale --replicas=0 -n openshift-ingress-operator deployment ingress-operator";
-      disarm-the-cvo =
-        "${pkgs.kubectl}/bin/kubectl scale deployment --replicas=0 -n openshift-cluster-version cluster-version-operator";
+      disarm-the-cvo = "${pkgs.kubectl}/bin/kubectl scale deployment --replicas=0 -n openshift-cluster-version cluster-version-operator";
       dnf = "dnf --cacheonly";
       dockerclean = "dockercleanc || true && dockercleani";
       dockercleanc = "docker rm $(docker ps -a -q)";
@@ -139,8 +153,7 @@ in rec {
       lst = "ls -trl | tail";
       mkae = "make";
       more = "less";
-      netshoot =
-        "${pkgs.kubectl}/bin/kubectl run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash";
+      netshoot = "${pkgs.kubectl}/bin/kubectl run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash";
       nowrap = "tput rmam";
       open-here = "emacsclient -t -n .";
       rust-gdb = "rust-gdb -q";
@@ -237,18 +250,6 @@ in rec {
     cacheHome = "${home_directory}/.cache";
   };
 
-  # fonts.fontconfig.enable = true;
-
-  gtk = {
-    enable = true;
-    font = {
-      name = "DejaVu Sans 16";
-      package = pkgs.dejavu_fonts;
-    };
-    iconTheme = { name = "Adwaita-dark"; };
-    theme = { name = "Adwaita-dark"; };
-  };
-
   xresources.properties = {
     # Set some Emacs GUI properties in the .Xresources file because
     # they are expensive to set during initialization in Emacs lisp.
@@ -258,8 +259,8 @@ in rec {
     "Emacs.menuBar" = false;
     "Emacs.toolBar" = false;
     "Emacs.verticalScrollBars" = false;
-    "Emacs.Font" = "DejaVu Sans Mono:size=16";
-    "Xcursor.size" = "128";
+    "Emacs.Font" = "DejaVu Sans Mono:size=18";
+    "Xcursor.size" = "96";
   };
 
   services.gpg-agent = {
@@ -306,33 +307,62 @@ in rec {
   };
 
   home.file.".xprofile".text = ''
-    xset -b
+    xset b off
     ${pkgs.xorg.setxkbmap}/bin/setxkbmap us -option ctrl:nocaps
     XPROFILED=1
     export XPROFILED
   '';
 
-  home.file.".local/share/gnome-shell/extensions/tilingnome@rliang.github.com".source =
-    builtins.fetchGit { url = "https://github.com/rliang/gnome-shell-extension-tilingnome.git"; };
+  # home.file.".local/share/gnome-shell/extensions/tilingnome@rliang.github.com".source =
+  #   builtins.fetchGit { url = "https://github.com/rliang/gnome-shell-extension-tilingnome.git"; };
 
-  home.file.".local/share/gnome-shell/extensions/dark-mode@lossurdo.github.com".source =
-    builtins.fetchGit { url = "https://github.com/lossurdo/gnome-shell-extension-dark-mode.git"; };
+  # home.file.".local/share/gnome-shell/extensions/dark-mode@lossurdo.github.com".source =
+  #   builtins.fetchGit { url = "https://github.com/lossurdo/gnome-shell-extension-dark-mode.git"; };
 
   dconf = {
     enable = true;
     settings = {
-      "org/gnome/shell".enabled-extensions = [ "tilingnome@rliang.github.com" "dark-mode@lossurdo.github.com" ];
+      "org/gnome/shell".enabled-extensions = [
+        "tilingnome@rliang.github.com"
+        "dark-mode@lossurdo.github.com"
+      ];
       "org/gnome/desktop/interface" = {
         enable-hot-corners = false;
         cursor-blink = false;
+        cursor-size = 96;
+        # font-name = "DejaVu Sans 14";
+        monospace-font-name = "Source Code Pro 14";
+        text-scaling-factor = 1.25;
+        enable-animations = false;
+        gtk-key-theme = "Emacs";
+      };
+      "org/gnome/desktop/wm/preferences" = {
+        audible-bell = false;
+        visual-bell = false;
       };
       "org/gnome/desktop/input-sources" = { xkb-options = [ "caps:ctrl_modifier" ]; };
-      "org/gnome/terminal/legacy/profiles:/:0" = { audible-bell = false; };
     };
   };
 
-  # programs.gnome-terminal.profile."Legacy" = {
-  #   enable = true;
-  #   cursorShape = "ibeam";
-  # };
+  home.file.".local/share/themes/custom/gnome-shell".text = ''
+    @import url("resource:///org/gnome/theme/gnome-shell.css");
+    stage {
+      font-size: 24pt;
+    }
+  '';
+
+  programs.gnome-terminal = {
+    enable = true;
+    showMenubar = false;
+    themeVariant = "default";
+    # menuAcceleratorEnabled = false;
+    profile = {
+      "5ddfe964-7ee6-4131-b449-26bdd97518f7" = {
+        default = true;
+        visibleName = "frobware";
+        cursorShape = "block";
+        showScrollbar = false;
+      };
+    };
+  };
 }
