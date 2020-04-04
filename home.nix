@@ -7,6 +7,8 @@ let
   ca-bundle_crt = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   custom-golist = pkgs.callPackage pkgs/golist { };
 in rec {
+  fonts.fontconfig.enable = true;
+
   programs.home-manager = {
     enable = true;
     path = "./home-manager";
@@ -40,10 +42,6 @@ in rec {
       # Development tools
       pkgs.gnumake
       pkgs.strace
-
-      # Fonts
-      pkgs.dejavu_fonts
-      pkgs.fontconfig
 
       # Grep
       pkgs.ag
@@ -86,6 +84,25 @@ in rec {
       custom-golist
 
       pkgs.wmctrl
+
+      # Fonts
+      # pkgs.corefonts
+      # pkgs.vistafonts
+      pkgs.dejavu_fonts
+      pkgs.emojione
+      pkgs.fira-mono
+      pkgs.font-awesome-ttf
+      pkgs.fontconfig
+      pkgs.nerdfonts
+      pkgs.noto-fonts
+      pkgs.noto-fonts-emoji
+      pkgs.noto-fonts-emoji
+      pkgs.noto-fonts-extra
+      pkgs.roboto
+      pkgs.source-code-pro
+      pkgs.source-sans-pro
+      pkgs.source-serif-pro
+      pkgs.twemoji-color-font
     ];
 
     sessionVariables = {
@@ -248,6 +265,7 @@ in rec {
     configHome = "${home_directory}/.config";
     dataHome = "${home_directory}/.local/share";
     cacheHome = "${home_directory}/.cache";
+    # xdg.menus.enable = true;  
   };
 
   xresources.properties = {
@@ -331,7 +349,8 @@ in rec {
         cursor-blink = false;
         cursor-size = 96;
         # font-name = "DejaVu Sans 14";
-        monospace-font-name = "Source Code Pro 14";
+        # monospace-font-name = [ "Source Code Pro Black" ];
+        monospace-font-name = "Source Code Pro Semibold 14";
         text-scaling-factor = 1.25;
         enable-animations = false;
         gtk-key-theme = "Emacs";
@@ -347,6 +366,7 @@ in rec {
   home.file.".local/share/themes/custom/gnome-shell".text = ''
     @import url("resource:///org/gnome/theme/gnome-shell.css");
     stage {
+      font-family: "Roboto", Sans-Serif;
       font-size: 24pt;
     }
   '';
@@ -365,4 +385,5 @@ in rec {
       };
     };
   };
+
 }
