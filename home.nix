@@ -6,6 +6,7 @@ let
   tmp_directory = "/tmp";
   ca-bundle_crt = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   custom-golist = pkgs.callPackage pkgs/golist { };
+  custom-xdwim = pkgs.callPackage pkgs/xdwim { };
 in rec {
   fonts.fontconfig.enable = true;
 
@@ -82,7 +83,6 @@ in rec {
       pkgs.gotags
       pkgs.gotools # gopls
       pkgs.gotop
-      custom-golist
 
       pkgs.wmctrl
 
@@ -104,6 +104,9 @@ in rec {
       pkgs.source-sans-pro
       pkgs.source-serif-pro
       pkgs.twemoji-color-font
+
+      custom-golist
+      custom-xdwim
     ];
 
     sessionVariables = {
