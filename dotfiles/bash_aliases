@@ -1,5 +1,8 @@
 # -*-shell-script-*-
 
+gnome-dark-mode="gsettings set org.gnome.desktop.interface gtk-theme \${GNOME_DARK_MODE:-Adwaita-dark}";
+gnome-light-mode="gsettings set org.gnome.desktop.interface gtk-theme  \${GNOME_DARK_MODE:-Adwaita-light}";
+
 alias amke=make
 alias mkae=make
 alias h='history 10'
