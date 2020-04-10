@@ -92,7 +92,10 @@
 
       # Add script/wrapper directories to PATH
       #
-      export PATH="${config.home.profileDirectory}/scripts:${config.home.profileDirectory}/wrappers:$PATH"
+      export PATH="${config.home.profileDirectory}/scripts:$PATH"
+      export PATH="${config.home.profileDirectory}/wrappers:$PATH"
+      export PATH="$HOME/.local/bin:$PATH"
+      export PATH="$HOME/bin:$PATH"
 
       # Make sure we don't import this file multiple times
       #
@@ -103,6 +106,9 @@
       la = "${pkgs.coreutils}/bin/ls --color=auto --all";
       lh = "${pkgs.coreutils}/bin/ls --color=auto --long --human-readable";
       ll = "${pkgs.coreutils}/bin/ls --color=auto --long";
+
+      gnome-dark-mode = "gsettings set org.gnome.desktop.interface gtk-theme \${GNOME_DARK_MODE:-Adwaita-dark}";
+      gnome-light-mode = "gsettings set org.gnome.desktop.interface gtk-theme  \${GNOME_DARK_MODE:-Adwaita-light}";
     };
     shellOptions = [
       "checkwinsize" # Update window lines/columns after each command

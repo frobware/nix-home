@@ -58,6 +58,7 @@ in rec {
       pkgs.hunspellDicts.en-gb-ise
       pkgs.hunspellDicts.en-us
       pkgs.ispell
+      pkgs.languagetool
 
       # jetbrains.idea-ultimate
 
