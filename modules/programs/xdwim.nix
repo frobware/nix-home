@@ -1,10 +1,10 @@
 { lib, pkgs, config, ... }:
 with lib;
 let
-  cfg = config.services.zzzdwim;
+  cfg = config.services.xdwim;
   xdwim = pkgs.callPackage ../../pkgs/xdwim {};
 in {
-  options.services.zzzdwim = {
+  options.services.xdwim = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -12,17 +12,10 @@ in {
         Whether to enable the xdwim hotkey service.
       '';
     };
-
-    package = mkOption {
-      description = "unclutter derivation to use.";
-      type = types.package;
-      default = pkgs.unclutter-xfixes;
-      defaultText = literalExample "pkgs.unclutter-xfixes";
-    };
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.user.services.zzzdwim = {
+    systemd.user.services.xdwim = {
       Install = {
         WantedBy = [ "default.target" ];
       };

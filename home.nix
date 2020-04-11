@@ -6,7 +6,6 @@ let
   tmp_directory = "/tmp";
   ca-bundle_crt = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   custom-golist = pkgs.callPackage pkgs/golist { };
-  custom-xdwim = pkgs.callPackage pkgs/xdwim { };
 in rec {
   fonts.fontconfig.enable = true;
 
@@ -17,7 +16,12 @@ in rec {
 
   imports = [
     ./programs/bash
+    ./modules/programs/xdwim.nix
   ];
+
+  services.xdwim = {
+    enable = true;
+  };
 
   programs.command-not-found.enable = true;
 
@@ -106,7 +110,6 @@ in rec {
       pkgs.twemoji-color-font
 
       custom-golist
-      custom-xdwim
     ];
 
     sessionVariables = {
@@ -270,19 +273,5 @@ in rec {
     };
   };
 
-  systemd.user.services.xdwim-agent = {
-    Unit = {
-      Description = "xdwim agent";
-    };
-
-    Service = {
-      ExecStart = "${custom-xdwim}/bin/rxdwim";
-      ExecReload = "${custom-xdwim}/bin/rxdwim";
-      Restart = "always";
-    };
-  };
-
   systemd.user.startServices = true;
-  systemd.user.services.xdwim-agent.Install.WantedBy = [ "default.target" ];
-  systemd.user.services.languagetool-http-server.Install.WantedBy = [ "default.target" ];
 }
