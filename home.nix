@@ -265,7 +265,8 @@ in rec {
     Service = {
       ExecStart = "${pkgs.languagetool}/bin/languagetool-http-server";
       ExecReload = "${pkgs.languagetool}/bin/languagetool-http-server";
-      #Restart = "on-failure";
+      Restart = "always";
+      RestartSec = 12;
     };
   };
 
@@ -277,7 +278,7 @@ in rec {
     Service = {
       ExecStart = "${custom-xdwim}/bin/rxdwim";
       ExecReload = "${custom-xdwim}/bin/rxdwim";
-      # Restart = "on-failure";
+      Restart = "always";
     };
   };
 
