@@ -6,6 +6,7 @@ let
   tmp_directory = "/tmp";
   ca-bundle_crt = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   custom-golist = pkgs.callPackage pkgs/golist { };
+  xdwim = pkgs.callPackage pkgs/xdwim {};
 in rec {
   fonts.fontconfig.enable = true;
 
@@ -193,17 +194,6 @@ in rec {
     }];
   };
 
-  # services.gnome-keyring = {
-  #     enable = true;
-  # };
-
-  # services.gnome3 = {
-  #     gnome-keyring.enable = true;
-  #     seahorse.enable = true;
-  # };
-
-  # security.pam.services.lightdm.enableGnomeKeyring = true;
-
   programs.emacs = {
     enable = true;
     #package = pkgs.emacs-overlay.emacsGit;
@@ -211,23 +201,9 @@ in rec {
     extraPackages = epkgs: with epkgs; [ melpaStablePackages.emacsql-sqlite emacs-libvterm pdf-tools elisp-ffi exwm ];
   };
 
-  # home.file.".local/share/gnome-shell/extensions/tilingnome@rliang.github.com".source =
-  #   builtins.fetchGit { url = "https://github.com/rliang/gnome-shell-extension-tilingnome.git"; };
-
-  # home.file.".local/share/gnome-shell/extensions/dim.desktop.70@d0h0.tuta.io".source =
-  #   builtins.fetchGit { url = "https://github.com/d0h0/dim.desktop.gnome.extension.git"; };
-
-  home.file.".local/share/gnome-shell/extensions/dark-mode@lossurdo.com".source =
-    builtins.fetchGit { url = "https://github.com/lossurdo/gnome-shell-extension-dark-mode.git"; };
-
   dconf = {
     enable = true;
     settings = {
-      "org/gnome/shell".enabled-extensions = [
-        # "tilingnome@rliang.github.com"
-        # "dark-mode@lossurdo.com"
-        "dim.desktop.70@d0h0.tuta.io"
-      ];
       "org/gnome/desktop/interface" = {
         enable-hot-corners = false;
         cursor-blink = false;
@@ -242,6 +218,37 @@ in rec {
         visual-bell = false;
       };
       "org/gnome/desktop/input-sources" = { xkb-options = [ "caps:ctrl_modifier" ]; };
+
+      "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/emacs/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/invert/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/maxvertically/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
+      ];
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/emacs" = {
+        binding = "<Alt><Shift>e";
+        command = "${xdwim}/bin/rxdwimctl emacs bash -login -c \'emacsclient -c --alternate-editor=\"\" --frame-parameters=\"((reverse . t))\"\'";
+        name = "Emacs";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/invert" = {
+        binding = "<Control><Alt><Shift>i";
+        command = "${pkgs.xcalib}/bin/xcalib -i -a";
+        name = "Invert";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/maxvertically" = {
+        binding = "<Control><Alt><Shift>v";
+        command = "${pkgs.wmctrl}/bin/wmctrl -r :ACTIVE: -b toggle,maximized_vert";
+        name = "MaxVertically";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
+        binding = "<Alt><Shift>n";
+        command = "${xdwim}/bin/rxdwimctl Gnome-terminal gnome-terminal";
+        name = "Terminal";
+      };
     };
   };
 
@@ -249,7 +256,6 @@ in rec {
     enable = true;
     showMenubar = false;
     themeVariant = "default";
-    # menuAcceleratorEnabled = false;
     profile = {
       "5ddfe964-7ee6-4131-b449-26bdd97518f7" = {
         default = true;
