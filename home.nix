@@ -18,7 +18,7 @@ in rec {
   imports = [
     ./programs/bash
   ];
-  
+
   programs.command-not-found.enable = true;
 
   # This value determines the Home Manager release that your
@@ -149,7 +149,7 @@ in rec {
     configHome = "${home_directory}/.config";
     dataHome = "${home_directory}/.local/share";
     cacheHome = "${home_directory}/.cache";
-    # xdg.menus.enable = true;  
+    # xdg.menus.enable = true;
   };
 
   xresources.properties = {
@@ -256,4 +256,32 @@ in rec {
       };
     };
   };
+
+  systemd.user.services.languagetool-http-server = {
+    Unit = {
+      Description = "languagetool-http-server";
+    };
+
+    Service = {
+      ExecStart = "${pkgs.languagetool}/bin/languagetool-http-server";
+      ExecReload = "${pkgs.languagetool}/bin/languagetool-http-server";
+      #Restart = "on-failure";
+    };
+  };
+
+  systemd.user.services.xdwim-agent = {
+    Unit = {
+      Description = "xdwim agent";
+    };
+
+    Service = {
+      ExecStart = "${custom-xdwim}/bin/rxdwim";
+      ExecReload = "${custom-xdwim}/bin/rxdwim";
+      # Restart = "on-failure";
+    };
+  };
+
+  systemd.user.startServices = true;
+  systemd.user.services.xdwim-agent.Install.WantedBy = [ "default.target" ];
+  systemd.user.services.languagetool-http-server.Install.WantedBy = [ "default.target" ];
 }
