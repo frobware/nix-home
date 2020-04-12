@@ -221,6 +221,7 @@ in rec {
 
       "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/emacs/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/firefox/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/invert/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/maxvertically/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
@@ -230,6 +231,12 @@ in rec {
         binding = "<Alt><Shift>e";
         command = "${xdwim}/bin/rxdwimctl emacs bash -login -c \'emacsclient -c --alternate-editor=\"\" --frame-parameters=\"((reverse . t))\"\'";
         name = "Emacs";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/firefox" = {
+        binding = "<Control><Alt><Shift>n";
+        name = "Firefox";
+        command  = "bash -c \"${pkgs.wmctrl}/bin/wmctrl -R firefox || (exec firefox &)\"";
       };
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/invert" = {
