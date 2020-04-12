@@ -284,6 +284,10 @@ in rec {
       Restart = "always";
       RestartSec = 12;
     };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 
   systemd.user.startServices = true;
