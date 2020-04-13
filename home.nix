@@ -22,6 +22,18 @@ in rec {
 
   services.xdwim = {
     enable = true;
+    keyMappings = [
+      {
+        name = "foo";
+        shortcut = "<Control>A";
+        command = "emacs";
+      }
+      {
+        name = "baz";
+        shortcut = "<Control>B";
+        command = "vim";
+      }
+    ];
   };
 
   programs.command-not-found.enable = true;
