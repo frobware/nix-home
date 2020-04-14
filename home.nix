@@ -130,8 +130,8 @@ in rec {
 
     sessionVariables = {
       ALTERNATE_EDITOR = "${pkgs.vim}/bin/vi";
-      EDITOR = "emacsclient -t -a vi";
-      VISUAL = "emacsclient -c -a vi";
+      EDITOR = "/usr/local/emacs-27/bin/emacsclient -t -a vi";
+      VISUAL = "/usr/local/emacs-27/bin/emacsclient -c -a vi";
       LESSHISTFILE = "${xdg.cacheHome}/less/history";
       LOCATE_PATH = "${xdg.cacheHome}/locate/home.db:${xdg.cacheHome}/locate/system.db";
       PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
@@ -209,12 +209,12 @@ in rec {
     }];
   };
 
-  programs.emacs = {
-    enable = true;
-    #package = pkgs.emacs-overlay.emacsGit;
-    package = pkgs.emacs;
-    extraPackages = epkgs: with epkgs; [ melpaStablePackages.emacsql-sqlite emacs-libvterm pdf-tools elisp-ffi exwm ];
-  };
+  # programs.emacs = {
+  #   enable = true;
+  #   #package = pkgs.emacs-overlay.emacsGit;
+  #   package = pkgs.emacs;
+  #   extraPackages = epkgs: with epkgs; [ melpaStablePackages.emacsql-sqlite emacs-libvterm pdf-tools elisp-ffi exwm ];
+  # };
 
   dconf = {
     enable = true;
@@ -244,7 +244,7 @@ in rec {
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/emacs" = {
         binding = "<Alt><Shift>e";
-        command = "${xdwim}/bin/rxdwimctl emacs bash -login -c \'emacsclient -c --alternate-editor=\"\" --frame-parameters=\"((reverse . t))\"\'";
+        command = "${xdwim}/bin/rxdwimctl emacs bash -login -c \'/usr/local/emacs-27/bin/emacsclient -c --alternate-editor=\"\" --frame-parameters=\"((reverse . t))\"\'";
         name = "Emacs";
       };
 

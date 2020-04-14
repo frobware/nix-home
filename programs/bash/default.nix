@@ -96,6 +96,7 @@
       export PATH="${config.home.profileDirectory}/wrappers:$PATH"
       export PATH="$HOME/.local/bin:$PATH"
       export PATH="$HOME/bin:$PATH"
+      export PATH="/usr/local/emacs-27/bin:$PATH"
 
       # Make sure we don't import this file multiple times
       #
