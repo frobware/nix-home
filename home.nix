@@ -57,6 +57,9 @@ in rec {
       pkgs.niv
       pkgs.nixfmt
 
+      # Straight
+      pkgs.watchexec
+
       # Development tools
       pkgs.gnumake
       pkgs.strace
