@@ -63,12 +63,13 @@ in rec {
       # Development tools
       pkgs.gnumake
       pkgs.strace
+      pkgs.yaml-language-server
 
-      # Grep
+      # Utilities
       pkgs.ag
-      pkgs.ripgrep
-
       pkgs.gnupg
+      pkgs.htop
+      pkgs.ripgrep
       pkgs.zlib
 
       pkgs.aspell
@@ -104,6 +105,7 @@ in rec {
       pkgs.gotools # gopls
       pkgs.gotop
 
+      # X11
       pkgs.wmctrl
 
       # Fonts
