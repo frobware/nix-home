@@ -60,10 +60,15 @@ in rec {
       # Straight
       pkgs.watchexec
 
+      # Browsers
+      pkgs.google-chrome
+      # pkgs.firefox
+
       # Development tools
       pkgs.gnumake
       pkgs.strace
       pkgs.yaml-language-server
+      pkgs.cmake
 
       # Utilities
       pkgs.ag
@@ -107,6 +112,8 @@ in rec {
 
       # X11
       pkgs.wmctrl
+      pkgs.xclip
+      pkgs.xsel
 
       # Fonts
       # pkgs.corefonts
