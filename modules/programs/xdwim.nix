@@ -38,20 +38,17 @@ in {
 
   config = lib.mkIf cfg.enable {
     systemd.user.services.xdwim = {
-      Install = {
-        WantedBy = [ "multi-user.target" ];
+      Unit = {
+        Description = "xdwim service";
+        PartOf = [ "graphical-session-pre.target" ];
       };
+
       Service = {
         ExecStart = "${xdwim}/bin/rxdwim";
+        Restart = "on-abort";
       };
-    };
 
-    # let dconf.settings = let dconfPath = "org/gnome/settings-daemon/plugins/media-keys";
-    # in
-    # {
-    #   "${dconfPath}".custom-keybindings = [
-    #     keyMappings
-    #   ];
-    # };
+      Install = { WantedBy = [ "graphical-session-pre.target" ]; };
+    };
   };
 }
