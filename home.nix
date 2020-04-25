@@ -63,7 +63,7 @@ in rec {
       pkgs.watchexec
 
       # Browsers
-      pkgs.google-chrome
+      # pkgs.google-chrome
       # pkgs.firefox
 
       # Development tools
