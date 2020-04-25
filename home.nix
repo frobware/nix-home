@@ -8,6 +8,8 @@ let
   custom-golist = pkgs.callPackage pkgs/golist { };
   xdwim = pkgs.callPackage pkgs/xdwim {};
 in rec {
+  targets.genericLinux.enable = true;
+
   fonts.fontconfig.enable = true;
 
   programs.home-manager = {
