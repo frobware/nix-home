@@ -58,6 +58,7 @@ in rec {
       pkgs.nox
       pkgs.niv
       pkgs.nixfmt
+      pkgs.nix-info
 
       # Straight
       pkgs.watchexec
