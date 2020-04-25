@@ -179,6 +179,14 @@ in rec {
     includeSystemConfig = true;
     extraConfig = ''
       set bell-style none
+      set completion-ignore-case on
+      # single Tab will complete if unique, display multiple
+      # completions otherwise
+      set show-all-if-ambiguous on
+      # use up and down arrow to match search history based on typed
+      # starting text.
+      "\e[A": history-search-backward
+      "\e[B": history-search-forward
     '';
   };
 
