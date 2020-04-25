@@ -316,5 +316,7 @@ in rec {
     };
   };
 
+  services.keybase.enable = true;
+
   systemd.user.startServices = true;
 }
