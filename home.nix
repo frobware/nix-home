@@ -324,7 +324,8 @@ in rec {
     };
   };
 
-  services.keybase.enable = true;
+  # services.kbfs.enable = false;
+  # services.keybase.enable = false;
 
   systemd.user.startServices = true;
 }
