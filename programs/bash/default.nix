@@ -119,11 +119,6 @@
     ];
   };
 
-  home.file.".inputrc".text = ''
-    set show-all-if-ambiguous on
-    set completion-ignore-case on
-  '';
-
   xdg.configFile = {
     "base16-shell" = {
       source = pkgs.fetchFromGitHub {
