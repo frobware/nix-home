@@ -14,9 +14,9 @@
       user = "frobware";
     };
 
-    "protocol \"keybase\"" = {
-      allow = "always";
-    };
+    # "protocol \"keybase\"" = {
+    #   allow = "always";
+    # };
   };
 
   home.packages = with pkgs; [
