@@ -11,17 +11,18 @@ let
 in rec {
   targets.genericLinux.enable = true;
 
+  imports = [
+    ./config/git.nix
+    ./programs/bash
+    ./modules/programs/xdwim.nix
+  ];
+
   fonts.fontconfig.enable = true;
 
   programs.home-manager = {
     enable = true;
     path = "./home-manager";
   };
-
-  imports = [
-    ./programs/bash
-    ./modules/programs/xdwim.nix
-  ];
 
   services.xdwim = {
     enable = true;
