@@ -159,6 +159,9 @@ in rec {
       LESSHISTFILE = "${xdg.cacheHome}/less/history";
       LOCATE_PATH = "${xdg.cacheHome}/locate/home.db:${xdg.cacheHome}/locate/system.db";
       PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
+
+      # https://github.com/NixOS/nixpkgs/issues/58132
+      GIT_SSH = "/usr/bin/ssh";
     };
 
     # keyboard.options = [ "caps:ctrl_modifier" ];
