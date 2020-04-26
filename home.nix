@@ -72,6 +72,7 @@ in rec {
       pkgs.strace
       pkgs.yaml-language-server
       pkgs.cmake
+      pkgs.shellcheck
 
       # Keybase
       # Waiting for https://github.com/rycee/home-manager/pull/973
