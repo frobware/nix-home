@@ -7,6 +7,7 @@ let
   ca-bundle_crt = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   custom-golist = pkgs.callPackage pkgs/golist { };
   xdwim = pkgs.callPackage pkgs/xdwim {};
+  scripts = pkgs.callPackage scripts/default.nix {};
 in rec {
   targets.genericLinux.enable = true;
 
@@ -54,6 +55,8 @@ in rec {
     # These are packages that should always be present in the user
     # environment, though perhaps not the machine environment.
     packages = [
+      scripts
+
       # Nix
       pkgs.nox
       pkgs.niv
