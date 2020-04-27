@@ -23,5 +23,6 @@
     git-crypt
     gitAndTools.gh
     gitAndTools.hub
+    gitAndTools.delta
   ];
 }
