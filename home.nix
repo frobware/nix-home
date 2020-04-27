@@ -343,5 +343,7 @@ in rec {
   # services.kbfs.enable = false;
   # services.keybase.enable = false;
 
+  services.lorri.enable = true;
+
   systemd.user.startServices = true;
 }
