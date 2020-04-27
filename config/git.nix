@@ -21,5 +21,7 @@
 
   home.packages = with pkgs; [
     git-crypt
+    gitAndTools.gh
+    gitAndTools.hub
   ];
 }
