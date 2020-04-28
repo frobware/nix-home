@@ -5,9 +5,7 @@ let
   home_directory = builtins.getEnv "HOME";
   tmp_directory = "/tmp";
   ca-bundle_crt = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
-  custom-golist = pkgs.callPackage pkgs/golist { };
   xdwim = pkgs.callPackage pkgs/xdwim {};
-  scripts = pkgs.callPackage scripts/default.nix {};
 in rec {
   targets.genericLinux.enable = true;
 
@@ -17,7 +15,7 @@ in rec {
     ./modules/programs/xdwim.nix
   ];
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig.enable = false;
 
   programs.home-manager = {
     enable = true;
@@ -56,7 +54,8 @@ in rec {
     # These are packages that should always be present in the user
     # environment, though perhaps not the machine environment.
     packages = [
-      scripts
+      (pkgs.callPackage ./scripts/switch-to-firefox.nix {})
+      (pkgs.callPackage ./scripts/gnome-toggle-theme.nix {})
 
       # Nix
       pkgs.nox
@@ -148,8 +147,6 @@ in rec {
       pkgs.source-sans-pro
       pkgs.source-serif-pro
       pkgs.twemoji-color-font
-
-      custom-golist
     ];
 
     sessionVariables = {

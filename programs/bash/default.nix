@@ -58,15 +58,6 @@
         done < <(find "${config.xdg.configHome}/profile.d" -name '*.sh' -print0)
       fi
     '';
-    logoutExtra = ''
-      # When leaving the console clear the screen to increase privacy.
-      #
-      # Cribbed from the Debian 9 skel.
-      #
-      if [[ "$SHLVL" == "1" ]]; then
-        clear
-      fi
-    '';
     profileExtra = ''
       # Explicitly set the default umask. This is particularly important
       # on the Windows Linux Subsystem, which uses the brain-dead umask
@@ -82,8 +73,6 @@
 
       # Add script/wrapper directories to PATH
       #
-      export PATH="${config.home.profileDirectory}/scripts:$PATH"
-      export PATH="${config.home.profileDirectory}/wrappers:$PATH"
       export PATH="$HOME/.local/bin:$PATH"
       export PATH="$HOME/bin:$PATH"
       export PATH="/usr/local/emacs-27/bin:$PATH"

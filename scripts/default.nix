@@ -1,3 +1,8 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs, ... }:
 
-pkgs.callPackage ./gnome-toggle-theme.nix {}
+{
+  imports = [
+    ./gnome-toggle-theme.nix { }
+    ./switch-to-firefox.nix { }
+  ];
+}
