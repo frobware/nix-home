@@ -24,16 +24,6 @@
         source "${config.home.profileDirectory}/etc/profile.d/bash_completion.sh"
       fi
 
-      # Use up- and down-arrows to search through history like ZSH.
-      #
-      # NOTE that the only way to reliably assign the arrow keys appears
-      # to be to insert them literally (Ctrl+V in ViM, Meta+V in Nano,
-      # then press the up (for `history-search-backward`) or down (for
-      # `history-search-forward) arrow key.
-      #
-      bind '"[A":history-search-backward'
-      bind '"[B":history-search-forward'
-
       # Prompt, largely cribbed from BASH-IT's "pure" prompt, with bits
       # from the Debian 9 skel.
       #
