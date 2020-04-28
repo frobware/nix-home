@@ -97,24 +97,4 @@
       "hostcomplete" # Attempt to auto-complete hostnames
     ];
   };
-
-  xdg.configFile = {
-    "base16-shell" = {
-      source = pkgs.fetchFromGitHub {
-        owner = "chriskempson";
-        repo = "base16-shell";
-        rev = "ce8e1e5";
-        sha256 = "1yj36k64zz65lxh28bb5rb5skwlinixxz6qwkwaf845ajvm45j1q";
-      };
-      recursive = true;
-    };
-    "profile.d/base16.sh".text = ''
-      # Initialize terminal colors
-      #
-      if [[ -n "$PS1" ]] && [[ "$TERM" != "linux" ]] && [[ -s "$BASE16_SHELL/profile_helper.sh" ]]; then
-        export BASE16_THEME=solarized-light
-        source "${config.xdg.configHome}/base16-shell/scripts/base16-solarized-light.sh"
-      fi
-    '';
-  };
 }
