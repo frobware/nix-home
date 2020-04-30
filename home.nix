@@ -57,6 +57,13 @@ in rec {
       (pkgs.callPackage ./scripts/switch-to-firefox.nix {})
       (pkgs.callPackage ./scripts/gnome-toggle-theme.nix {})
 
+      # Mail
+      pkgs.afew
+      pkgs.alot
+      pkgs.imapsync
+      pkgs.isync
+      pkgs.notmuch
+
       # Nix
       pkgs.nox
       pkgs.niv
