@@ -63,6 +63,8 @@ in rec {
       pkgs.imapsync
       pkgs.isync
       pkgs.notmuch
+      pkgs.dovecot
+      pkgs.msmtp
 
       # Nix
       pkgs.nox
