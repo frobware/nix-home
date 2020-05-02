@@ -66,6 +66,12 @@ in rec {
       pkgs.dovecot
       pkgs.msmtp
 
+      # Clouds
+      pkgs.awscli
+      pkgs.google-cloud-sdk
+      pkgs.azure-cli
+      pkgs.doctl
+
       # Nix
       pkgs.nox
       pkgs.niv
