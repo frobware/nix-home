@@ -92,13 +92,6 @@ in rec {
       pkgs.cmake
       pkgs.shellcheck
 
-      # Keybase
-      # Waiting for https://github.com/rycee/home-manager/pull/973
-      # pkgs.keybase
-      # pkgs.keybase-gui
-      # pkgs.kbfs
-      # pkgs.fuse
-
       # Utilities
       pkgs.ag
       pkgs.gnupg
