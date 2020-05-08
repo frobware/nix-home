@@ -277,6 +277,7 @@ in rec {
       "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/emacs/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/firefox/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/chrome/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/invert/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/maxvertically/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"
@@ -289,9 +290,15 @@ in rec {
       };
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/firefox" = {
-        binding = "<Control><Alt><Shift>n";
+        binding = "<Control><Alt><Shift>f";
         name = "Firefox";
         command  = "bash -c \"${pkgs.wmctrl}/bin/wmctrl -R firefox || (exec firefox &)\"";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/chrome" = {
+        binding = "<Control><Alt><Shift>n";
+        name = "Chrome";
+        command = "${xdwim}/bin/rxdwimctl google-chrome google-chrome";
       };
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/invert" = {
