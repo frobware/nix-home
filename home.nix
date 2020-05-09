@@ -129,7 +129,8 @@ in rec {
       pkgs.golangci-lint
       pkgs.golint
       pkgs.gotags
-      pkgs.gotools # gopls
+      pkgs.gotools
+      pkgs.gopls
       pkgs.gotop
 
       # X11
