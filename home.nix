@@ -119,6 +119,12 @@ in rec {
       pkgs.kubernetes-helm
       pkgs.kustomize
 
+      # Rust
+      pkgs.rust-analyzer
+      pkgs.clippy
+      pkgs.rls
+      pkgs.cargo
+
       # Go
       pkgs.errcheck
       pkgs.go
