@@ -147,21 +147,21 @@ in rec {
       # Fonts
       # pkgs.corefonts
       # pkgs.vistafonts
-      pkgs.dejavu_fonts
-      pkgs.emojione
-      pkgs.fira-mono
-      pkgs.font-awesome-ttf
-      pkgs.fontconfig
-      pkgs.nerdfonts
-      pkgs.noto-fonts
-      pkgs.noto-fonts-emoji
-      pkgs.noto-fonts-emoji
-      pkgs.noto-fonts-extra
-      pkgs.roboto
-      pkgs.source-code-pro
-      pkgs.source-sans-pro
-      pkgs.source-serif-pro
-      pkgs.twemoji-color-font
+      # pkgs.dejavu_fonts
+      # pkgs.emojione
+      # pkgs.fira-mono
+      # pkgs.font-awesome-ttf
+      # pkgs.fontconfig
+      # pkgs.nerdfonts
+      # pkgs.noto-fonts
+      # pkgs.noto-fonts-emoji
+      # pkgs.noto-fonts-emoji
+      # pkgs.noto-fonts-extra
+      # pkgs.roboto
+      # pkgs.source-code-pro
+      # pkgs.source-sans-pro
+      # pkgs.source-serif-pro
+      # pkgs.twemoji-color-font
     ];
 
     sessionVariables = {
