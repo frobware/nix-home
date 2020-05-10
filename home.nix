@@ -325,7 +325,7 @@ in rec {
   programs.gnome-terminal = {
     enable = true;
     showMenubar = false;
-    themeVariant = "default";
+    themeVariant = "system";
     profile = {
       "5ddfe964-7ee6-4131-b449-26bdd97518f7" = {
         default = true;
