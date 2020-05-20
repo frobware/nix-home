@@ -58,16 +58,16 @@ in rec {
       (pkgs.callPackage ./scripts/switch-to-firefox.nix {})
       (pkgs.callPackage ./scripts/gnome-toggle-theme.nix {})
 
+      pkgs.cacert
+      pkgs.rlwrap
+
       # Mail
       pkgs.afew
-      pkgs.alot
-      pkgs.imapsync
       pkgs.isync
-      pkgs.notmuch
-      pkgs.dovecot
       pkgs.msmtp
+      pkgs.gmailieer
 
-      # Clouds
+      # Cloud/SDKs
       pkgs.awscli
       pkgs.google-cloud-sdk
       pkgs.azure-cli
@@ -99,6 +99,7 @@ in rec {
       pkgs.htop
       pkgs.ripgrep
       pkgs.zlib
+      pkgs.jq
 
       pkgs.aspell
       pkgs.aspellDicts.en
@@ -125,6 +126,17 @@ in rec {
       pkgs.clippy
       pkgs.rls
       pkgs.cargo
+
+      # Rust-based core-like utilities
+      pkgs.dust                 # du
+      pkgs.exa                  # ls
+      pkgs.fd                   # find
+      pkgs.hyperfine            # time
+      pkgs.procs                # ps
+      pkgs.sd                   # sed
+      pkgs.tokei                # wc -l
+      pkgs.xsv                  # csv
+      pkgs.zenith               # top
 
       # Go
       pkgs.errcheck
@@ -172,6 +184,7 @@ in rec {
       LESSHISTFILE = "${xdg.cacheHome}/less/history";
       LOCATE_PATH = "${xdg.cacheHome}/locate/home.db:${xdg.cacheHome}/locate/system.db";
       PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
+      NOTMUCH_CONFIG = "${xdg.configHome}/notmuch/notmuchrc";
 
       # https://github.com/NixOS/nixpkgs/issues/58132
       GIT_SSH = "/usr/bin/ssh";
