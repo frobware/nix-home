@@ -1,5 +1,5 @@
-{ writeShellScriptBin }:
+{ pkgs, writeShellScriptBin }:
 
 writeShellScriptBin "switch-to-firefox" ''
-  wmctrl -R firefox || (exec firefox &)
+  ${pkgs.wmctrl}/bin/wmctrl -R firefox || (exec firefox &)
 ''
