@@ -11,6 +11,7 @@ in rec {
 
   imports = [
     ./config/git.nix
+    ./config/mail.nix
     ./programs/bash
     ./modules/programs/xdwim.nix
   ];
