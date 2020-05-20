@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 : "${GNOME_DARK_MODE:='Adwaita-dark'}"
 : "${GNOME_LIGHT_MODE:='Adwaita'}"
