@@ -24,7 +24,10 @@
     lieer = {
       enable = true;
       dropNonExistingLabels = true;
-      sync.enable = true;
+      sync = {
+        enable = true;
+        frequency = "*:0/15";
+      };
     };
     msmtp.enable = true;
     notmuch.enable = true;

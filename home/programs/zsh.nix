@@ -31,7 +31,7 @@
       LESS = "-FRSXM";
       PROMPT = "%m %~ $ ";
       PROMPT_DIRTRIM = "2";
-      PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
+#     PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
     };
 
     profileExtra = ''

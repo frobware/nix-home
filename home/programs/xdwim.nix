@@ -2,7 +2,6 @@
 with lib;
 let
   cfg = config.services.xdwim;
-  xdwim = pkgs.callPackage ../../pkgs/xdwim {};
 
   keyMapping = types.submodule {
     options = {
@@ -44,7 +43,7 @@ in {
       };
 
       Service = {
-        ExecStart = "${xdwim}/bin/rxdwim";
+        ExecStart = "${pkgs.xdwim}/bin/rxdwim";
         Restart = "on-abort";
       };
 

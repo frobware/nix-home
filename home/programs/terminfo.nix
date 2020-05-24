@@ -17,5 +17,5 @@ let
     ${lib.getBin ncurses}/bin/tic -x -o "$HOME/.terminfo" terminfo-xterm-24bit.src
   '';
 in {
-  home.packages = [ terminfo-xterm-24bit ];
+  home.packages = [ terminfo-xterm-24bit ncurses ];
 }

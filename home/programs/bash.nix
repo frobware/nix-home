@@ -82,13 +82,6 @@
       export __PROFILE_SOURCED=1
     '';
     shellAliases = {
-      ls = "${pkgs.coreutils}/bin/ls --color=auto";
-      la = "${pkgs.coreutils}/bin/ls --color=auto --all";
-      lh = "${pkgs.coreutils}/bin/ls --color=auto --long --human-readable";
-      ll = "${pkgs.coreutils}/bin/ls --color=auto --long";
-
-      gnome-dark-mode = "gsettings set org.gnome.desktop.interface gtk-theme \${GNOME_DARK_MODE:-Adwaita-dark}";
-      gnome-light-mode = "gsettings set org.gnome.desktop.interface gtk-theme  \${GNOME_DARK_MODE:-Adwaita-light}";
     };
     shellOptions = [
       "checkwinsize" # Update window lines/columns after each command

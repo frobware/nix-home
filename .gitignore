@@ -1,1 +1,3 @@
-result*
+secrets.nix
+result
+result/
