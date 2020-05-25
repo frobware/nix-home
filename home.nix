@@ -117,6 +117,7 @@
       pkgs.gotools
       pkgs.gopls
       pkgs.gotop
+      pkgs.goreftools
 
       # X11
       pkgs.wmctrl
