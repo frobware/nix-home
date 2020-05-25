@@ -119,6 +119,7 @@
       pkgs.gotop
       pkgs.goreftools
       pkgs.gomodifytags
+      pkgs.goimpl
 
       # X11
       pkgs.wmctrl
