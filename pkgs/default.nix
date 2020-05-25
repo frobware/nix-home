@@ -7,4 +7,5 @@ with pkgs;
 rec {
   xdwim = callPackage ./xdwim {};
   goreftools = callPackage ./goreftools {};
+  gomodifytags = callPackage ./gomodifytags {};
 }

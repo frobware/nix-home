@@ -118,6 +118,7 @@
       pkgs.gopls
       pkgs.gotop
       pkgs.goreftools
+      pkgs.gomodifytags
 
       # X11
       pkgs.wmctrl
