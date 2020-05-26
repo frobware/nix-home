@@ -24,14 +24,7 @@
         source "${config.home.profileDirectory}/etc/profile.d/bash_completion.sh"
       fi
 
-      # Prompt, largely cribbed from BASH-IT's "pure" prompt, with bits
-      # from the Debian 9 skel.
-      #
-      if [[ $(id -u) -eq 0 ]]; then
-        export PS1="\[\e[0;31m\]\u\[\e[0m\]@\[\e[0;35m\]\h\[\e[0m\]:\[\e[0;33m\]\w\[\e[0m\] \[\e[0;31m\]\$\[\e[39m\] "
-      else
-        export PS1="\[\e[0;32m\]\u\[\e[0m\]@\[\e[0;34m\]\h\[\e[0m\]:\[\e[0;33m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[39m\] "
-      fi
+      export PS1="\u@\h:\w\n$ "
 
       # If running under something that claims to act like XTerm, try to
       # dynamically set the window title.
