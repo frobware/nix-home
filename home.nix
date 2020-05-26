@@ -120,6 +120,7 @@
       pkgs.goreftools
       pkgs.gomodifytags
       pkgs.goimpl
+      pkgs.delve
 
       # X11
       pkgs.wmctrl
