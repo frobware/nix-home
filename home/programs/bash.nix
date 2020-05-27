@@ -50,6 +50,22 @@
           source "$FILE"
         done < <(find "${config.xdg.configHome}/profile.d" -name '*.sh' -print0)
       fi
+
+      function source_kubectl_completion() {
+          type -P kubectl 2>&1 >/dev/null && source <(kubectl completion bash)
+      }
+
+      function source_oc_completion() {
+          type -P oc 2>&1 >/dev/null && source <(oc completion bash)
+      }
+
+      function source_ocadm_completion() {
+          type -P oc adm 2>&1 >/dev/null && source <(oc adm completion bash)
+      }
+
+      source_kubectl_completion
+      source_oc_completion
+      source_ocadm_completion
     '';
     profileExtra = ''
       # Explicitly set the default umask. This is particularly important
