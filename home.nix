@@ -58,6 +58,7 @@
       pkgs.yaml-language-server
       pkgs.cmake
       pkgs.shellcheck
+      pkgs.clang-tools
 
       # Utilities
       pkgs.ag
