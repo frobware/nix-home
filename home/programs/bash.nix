@@ -92,6 +92,9 @@
       export __PROFILE_SOURCED=1
     '';
     shellAliases = {
+      h = "history 20";
+      ls = "ls --color=no";
+      lst = "ls -trl";
     };
     shellOptions = [
       "checkwinsize" # Update window lines/columns after each command
