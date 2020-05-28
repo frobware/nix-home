@@ -11,7 +11,7 @@ buildGoModule rec {
     sha256 = "1agn2294wah5bny9hgc35g2wagq81i9hn1m0py0j5xgy4g6736y3";
   };
 
-  modSha256 = "15m38zkp6k811p9575p4frj79k49n1cn4h07abdwmalkhqvbcsj0";
+  vendorModSha256 = null;
 
   meta = with stdenv.lib; {
     homepage    = https://github.com/marwan-at-work/golist;

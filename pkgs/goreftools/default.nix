@@ -17,8 +17,7 @@ buildGoModule rec {
     "cmd/fixplurals"
   ];
 
-# vendorSha256 = null;
-  modSha256 = "1sihahgkcj018ixbnz58npfh4drhqip2xmc9p7lq3an8japb9nyx";
+  vendorSha256 = null;
 
   meta = with stdenv.lib; {
     homepage    = https://github.com/davidrjenni/reftools;
