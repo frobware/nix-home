@@ -150,8 +150,8 @@
 
     sessionVariables = {
       ALTERNATE_EDITOR = "${pkgs.vim}/bin/vi";
-      EDITOR = "/usr/local/emacs-27/bin/emacsclient -t -a vi";
-      VISUAL = "/usr/local/emacs-27/bin/emacsclient -c -a vi";
+      EDITOR = "emacsclient -t -a vi";
+      VISUAL = "emacsclient -c -a vi";
       LESSHISTFILE = "${config.xdg.cacheHome}/less/history";
       PASSWORD_STORE_DIR = "${config.xdg.configHome}/password-store";
       NOTMUCH_CONFIG = "${config.xdg.configHome}/notmuch/notmuchrc";
