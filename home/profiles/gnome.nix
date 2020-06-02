@@ -48,7 +48,7 @@ in {
 
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/emacs" = {
           binding = "<Alt><Shift>e";
-          command = "${pkgs.xdwim}/bin/rxdwimctl emacs bash -login -c \'/usr/local/emacs-27/bin/emacsclient -c --alternate-editor=\"\" --frame-parameters=\"((reverse . t))\"\'";
+          command = "${pkgs.xdwim}/bin/rxdwimctl emacs bash -login -c \'emacsclient -c --alternate-editor=\"\" --frame-parameters=\"((reverse . t))\"\'";
           name = "Emacs";
         };
 
