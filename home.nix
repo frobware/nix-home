@@ -39,6 +39,9 @@
       pkgs.azure-cli
       pkgs.doctl
 
+      # Shell
+      pkgs.shfmt
+
       # Nix
       pkgs.nox
       pkgs.niv
