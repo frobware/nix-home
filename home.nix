@@ -42,6 +42,9 @@
       # Shell
       pkgs.shfmt
 
+      # KDE
+      pkgs.kdiff3
+
       # Nix
       pkgs.nox
       pkgs.niv
