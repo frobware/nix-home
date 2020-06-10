@@ -1,5 +1,6 @@
 [
   misc/mail.nix
+  misc/emacs-snippets.nix
   misc/xdg.nix
 
   profiles/gnome.nix
