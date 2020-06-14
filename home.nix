@@ -26,6 +26,7 @@
 
       pkgs.cacert
       pkgs.rlwrap
+      pkgs.ncdu
 
       # Mail
       pkgs.afew
