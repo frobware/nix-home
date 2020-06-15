@@ -13,6 +13,9 @@ in {
     dconf = {
       enable = true;
       settings = {
+        "org/gnome/desktop/peripherals/mouse".natural-scroll = true;
+        "org/gnome/desktop/peripherals/touchpad".natural-scroll = true;
+
         "org/gnome/desktop/background" = {
           picture-options = "none";
           primary-color = "#606060"; # grey. ish.
