@@ -92,7 +92,6 @@
       pkgs.kube-prompt
       pkgs.kubectl
       pkgs.kubectx
-      pkgs.kubernetes-helm
       pkgs.kustomize
 
       # Rust
