@@ -112,22 +112,22 @@
       pkgs.zenith               # top
 
       # Go
+      pkgs.delve
       pkgs.errcheck
       pkgs.go
       pkgs.go-bindata
       pkgs.go2nix
       pkgs.gocode
       pkgs.godef
+      pkgs.goimpl
       pkgs.golangci-lint
       pkgs.golint
+      pkgs.gomodifytags
+      pkgs.gopls
+      pkgs.goreftools
       pkgs.gotags
       pkgs.gotools
-      pkgs.gopls
       pkgs.gotop
-      pkgs.goreftools
-      pkgs.gomodifytags
-      pkgs.goimpl
-      pkgs.delve
 
       # X11
       pkgs.wmctrl

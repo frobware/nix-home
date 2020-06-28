@@ -2,16 +2,15 @@
 
 buildGoModule rec {
   pname = "impl";
-  version = "v1.0.0";
+  version = "1.0.0";
+  vendorSha256 = "0xkalwy02w62px01jdwwr3vwwsh50f22dsxf8lrrwmw6k0rq57zv";
 
   src = fetchFromGitHub {
     owner = "josharian";
     repo = pname;
-    rev = version;
+    rev = "v${version}";
     sha256 = "0l21fkcgiaaf6ka91dmz8hx0l3nbp0kqi8p25kij1s5zb796z0dy";
   };
-
-  modSha256 = "1p1wahmi41jbx6rk60vqnxab0mq5lsr1fbrqs604gx94npk1s14d";
 
   meta = with stdenv.lib; {
     homepage    = https://github.com/josharian/impl;
