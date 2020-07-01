@@ -18,15 +18,15 @@
     '';
   };
 
-  accounts.email.accounts."andrew.iain.mcdermott@gmail.com" = {
-    address = "andrew.iain.mcdermott@gmail.com";
+  accounts.email.accounts."amcdermo@redhat.com" = {
+    address = "amcdermo@redhat.com";
     flavor = "gmail.com";
     lieer = {
       enable = true;
       dropNonExistingLabels = true;
       sync = {
         enable = true;
-        frequency = "*:0/15";
+        frequency = "*:0/30";
       };
     };
     msmtp.enable = true;
@@ -34,7 +34,7 @@
     passwordCommand = "secret-tool lookup user mail";
     primary = true;
     realName = "Andrew McDermott";
-    userName = "andrew.iain.mcdermott@gmail.com";
+    userName = "amcdermo@redhat.com";
   };
 
   services = {
