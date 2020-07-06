@@ -91,6 +91,8 @@
       # Make sure we don't import this file multiple times
       #
       export __PROFILE_SOURCED=1
+
+      export $(gnome-keyring-daemon --start)
     '';
     shellAliases = {
       h = "history 20";

@@ -216,7 +216,7 @@
   # };
 
   services.gpg-agent = {
-    enable = true;
+    enable = false;
     enableSshSupport = true;
     grabKeyboardAndMouse = false;
     pinentryFlavor = "tty";
