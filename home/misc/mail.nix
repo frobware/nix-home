@@ -10,10 +10,22 @@
   };
 
   programs.afew = {
+    enable = true;
     extraConfig = ''
       [KillThreadsFilter]
       [ListMailsFilter]
       [ArchiveSentMailsFilter]
+
+      [Filter.0]
+      query = from:notifications@github.com
+      tags = +github
+
+      [HeaderMatchingFilter.0]
+      header = X-GitHub-Reason
+      pattern = (assign|author|comment|mention|push|review_requested|state_change|team_mention)
+      tags = +gh;+inbox;+unread
+
+      [MeFilter]
       [InboxFilter]
     '';
   };
@@ -24,6 +36,7 @@
     lieer = {
       enable = true;
       dropNonExistingLabels = true;
+      ignoreTagsLocal = [ "new" ];
       sync = {
         enable = true;
         frequency = "*:0/30";
