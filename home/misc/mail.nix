@@ -7,6 +7,7 @@
       postNew = "${pkgs.afew}/bin/afew --tag --new -v";
     };
     new.tags = [ "new" ];
+    new.ignore = [ "/.*[.](json|lock|bak)$/" ".git"];
   };
 
   programs.afew = {
