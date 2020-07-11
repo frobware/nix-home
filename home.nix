@@ -34,6 +34,8 @@
       pkgs.msmtp
       pkgs.gmailieer
 
+      pkgs.notmuch
+
       # Cloud/SDKs
       pkgs.awscli
       pkgs.google-cloud-sdk
