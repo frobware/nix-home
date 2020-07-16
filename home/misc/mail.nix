@@ -21,6 +21,10 @@
       query = from:notifications@github.com
       tags = +github
 
+      [Filter.1]
+      query = from:bugzilla@redhat.com
+      tags = +bz
+
       [HeaderMatchingFilter.0]
       header = X-GitHub-Reason
       pattern = (assign|author|comment|mention|push|review_requested|state_change|team_mention)
