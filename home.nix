@@ -33,7 +33,7 @@
       pkgs.isync
       pkgs.msmtp
       pkgs.gmailieer
-
+      pkgs.muchsync
       pkgs.notmuch
 
       # Cloud/SDKs
