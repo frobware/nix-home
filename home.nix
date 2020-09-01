@@ -126,7 +126,6 @@
       pkgs.golint
       pkgs.gomodifytags
       pkgs.gopls
-      pkgs.goreftools
       pkgs.gotags
       pkgs.gotools
       pkgs.gotop
