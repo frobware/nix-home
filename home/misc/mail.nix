@@ -2,7 +2,7 @@
 
 {
   programs.notmuch = {
-    enable = true;
+    enable = false;
     hooks = {
       postNew = "${pkgs.afew}/bin/afew --tag --new -v";
     };
@@ -11,7 +11,7 @@
   };
 
   programs.afew = {
-    enable = true;
+    enable = false;
     extraConfig = ''
       [KillThreadsFilter]
       [ListMailsFilter]
@@ -21,16 +21,21 @@
       query = from:notifications@github.com
       tags = +github
 
+      [MeFilter]
+
       [Filter.1]
       query = from:bugzilla@redhat.com
       tags = +bz
+
+      [Filter.2]
+      query = from:bugzilla@redhat.com and tag:to-me
+      tags = +bz-me
 
       [HeaderMatchingFilter.0]
       header = X-GitHub-Reason
       pattern = (assign|author|comment|mention|push|review_requested|state_change|team_mention)
       tags = +gh;+inbox;+unread
 
-      [MeFilter]
       [InboxFilter]
     '';
   };
@@ -39,16 +44,16 @@
     address = "amcdermo@redhat.com";
     flavor = "gmail.com";
     lieer = {
-      enable = true;
+      enable = false;
       dropNonExistingLabels = true;
       ignoreTagsLocal = [ "new" ];
       sync = {
-        enable = true;
+        enable = false;
         frequency = "*:0/30";
       };
     };
     msmtp.enable = true;
-    notmuch.enable = true;
+    notmuch.enable = false;
     passwordCommand = "secret-tool lookup user mail";
     primary = true;
     realName = "Andrew McDermott";
@@ -56,6 +61,6 @@
   };
 
   services = {
-    lieer.enable = true;
+    lieer.enable = false;
   };
 }
