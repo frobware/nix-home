@@ -2,16 +2,16 @@
 
 {
   programs.notmuch = {
-    enable = false;
+    enable = true;
     hooks = {
-      postNew = "${pkgs.afew}/bin/afew --tag --new -v";
+      preNew = "mbsync --all";
     };
     new.tags = [ "new" ];
     new.ignore = [ "/.*[.](json|lock|bak)$/" ".git"];
   };
 
   programs.afew = {
-    enable = false;
+    enable = true;
     extraConfig = ''
       [KillThreadsFilter]
       [ListMailsFilter]
@@ -21,46 +21,49 @@
       query = from:notifications@github.com
       tags = +github
 
-      [MeFilter]
-
       [Filter.1]
       query = from:bugzilla@redhat.com
       tags = +bz
-
-      [Filter.2]
-      query = from:bugzilla@redhat.com and tag:to-me
-      tags = +bz-me
 
       [HeaderMatchingFilter.0]
       header = X-GitHub-Reason
       pattern = (assign|author|comment|mention|push|review_requested|state_change|team_mention)
       tags = +gh;+inbox;+unread
 
+      [MeFilter]
       [InboxFilter]
     '';
   };
 
+  programs.mbsync.enable = true;
+  programs.msmtp.enable = true;
+
+  accounts.email.certificatesFile = "/etc/ssl/certs/ca-bundle.trust.crt";
+
   accounts.email.accounts."amcdermo@redhat.com" = {
     address = "amcdermo@redhat.com";
-    flavor = "gmail.com";
-    lieer = {
-      enable = false;
-      dropNonExistingLabels = true;
-      ignoreTagsLocal = [ "new" ];
-      sync = {
-        enable = false;
-        frequency = "*:0/30";
-      };
-    };
-    msmtp.enable = true;
-    notmuch.enable = false;
-    passwordCommand = "secret-tool lookup user mail";
-    primary = true;
     realName = "Andrew McDermott";
     userName = "amcdermo@redhat.com";
-  };
-
-  services = {
-    lieer.enable = false;
+    imap.host = "imap.gmail.com";
+    smtp.host = "smtp.gmail.com";
+    passwordCommand = "pass rhat/app-password/gnus";
+    primary = true;
+    mbsync = {
+      enable = true;
+      create = "both";
+      expunge = "both";
+      patterns = [ "*" "![Gmail]*" "![Gmail]/Sent Mail" "![Gmail]/Starred" "![Gmail]/All Mail" ];
+      extraConfig = {
+        channel = {
+          Sync = "All";
+        };
+        account = {
+          Timeout = 120;
+          PipelineDepth = 5;
+        };
+      };
+    };
+    notmuch.enable = true;
+    msmtp.enable = true;
   };
 }
