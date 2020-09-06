@@ -7,7 +7,7 @@
       preNew = "mbsync --all";
     };
     new.tags = [ "new" ];
-    new.ignore = [ "/.*[.](json|lock|bak)$/" ".git"];
+    new.ignore = [ "/.*[.](json|lock|bak)$/" ".git" "dovecot-uidlist" "dovecot-uidvalidity" "subscriptions" ];
   };
 
   programs.afew = {
