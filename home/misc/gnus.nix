@@ -40,6 +40,10 @@ base_dir = ~/tmp
   (setq gnus-read-active-file 'some)
   (setq gnus-registry-cache-file "~/.config/gnus/gnus.registry.eld")
   (setq gnus-select-method '(nnnil))
+  (setq gnus-secondary-select-methods
+	     '((nnimap ""
+		      (nnimap-stream shell)
+		      (nnimap-shell-program "${pkgs.dovecot}/libexec/dovecot/imap -c ~/.config/gnus/dovecotrc-work-mbsync"))))
   (setq gnus-startup-file "~/.config/gnus/newsrc")
   (setq gnus-use-dribble-file t)
   (setq mail-source-directory "~/.config/gnus/mail")
@@ -55,10 +59,6 @@ base_dir = ~/tmp
   :straight (:type built-in)
   :after gnus
   :config
-  (setq gnus-level-subscribed 6)
-  (setq gnus-level-unsubscribed 7)
-  (setq gnus-level-zombie 8)
-  (setq gnus-activate-level 2)
   (setq gnus-list-groups-with-ticked-articles nil)
   (setq gnus-group-sort-function
         '((gnus-group-sort-by-unread)
@@ -93,7 +93,7 @@ base_dir = ~/tmp
         '(((gnus-seconds-today) . "Today at %R")
           ((+ 86400 (gnus-seconds-today)) . "Yesterday, %R")
           (t . "%Y-%m-%d %R")))
-  (setq gnus-summary-line-format "%U%R%z %-16,16&user-date;  %4L:%-30,30f  %B%S\n")
+  (setq gnus-summary-line-format "%U%R%z %-16,16&user-date;  %4i:%-30,30f  %B%S\n")
   (setq gnus-summary-mode-line-format "Gnus: %p (%U)")
   (setq gnus-sum-thread-tree-false-root "")
   (setq gnus-sum-thread-tree-indent " ")
@@ -101,10 +101,6 @@ base_dir = ~/tmp
   (setq gnus-sum-thread-tree-root "")
   (setq gnus-sum-thread-tree-single-leaf "└─➤ ")
   (setq gnus-sum-thread-tree-vertical "│")
-  (setq gnus-secondary-select-methods
-	     '((nnimap "redhat"
-		      (nnimap-stream shell)
-		      (nnimap-shell-program "${pkgs.dovecot}/libexec/dovecot/imap -c ~/.config/gnus/dovecotrc-work-mbsync"))))
   :hook
   (gnus-summary-exit-hook . gnus-topic-sort-groups-by-alphabet)
   (gnus-summary-exit-hook . gnus-group-sort-groups-by-rank))
