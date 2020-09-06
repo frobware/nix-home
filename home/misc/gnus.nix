@@ -19,13 +19,15 @@ base_dir = ~/tmp
   (setq user-full-name "Andrew McDermott")
   (setq user-mail-address "amcdermo@redhat.com"))
 
-(use-package epa
+(use-package epa-file
+  :straight (:type built-in)
   :config
   (setq epa-file-cache-passphrase-for-symmetric-encryption t)
   :init
   (epa-file-enable))
 
 (use-package gnus
+  :straight (:type built-in)
   :config
   (setq gnus-agent t)
   (setq gnus-always-read-dribble-file t)
@@ -50,8 +52,8 @@ base_dir = ~/tmp
   (setq gnus-use-bbdb t))
 
 (use-package gnus-group
+  :straight (:type built-in)
   :after gnus
-  :init
   :config
   (setq gnus-level-subscribed 6)
   (setq gnus-level-unsubscribed 7)
@@ -70,17 +72,8 @@ base_dir = ~/tmp
               ("M-n" . gnus-topic-goto-next-topic)
               ("M-p" . gnus-topic-goto-previous-topic)))
 
-(require 'gnus-dired)
-(require 'message)
-
-(setq gnus-select-method '(nnnil))
-
-(add-to-list 'gnus-secondary-select-methods
-	     '(nnimap ""
-		      (nnimap-stream shell)
-		      (nnimap-shell-program "${pkgs.dovecot}/libexec/dovecot/imap -c ~/.config/gnus/dovecotrc-work-mbsync")))
-
 (use-package gnus-sum
+  :straight (:type built-in)
   :after (gnus gnus-group)
   :config
   (setq gnus-auto-select-first nil)
@@ -108,22 +101,16 @@ base_dir = ~/tmp
   (setq gnus-sum-thread-tree-root "")
   (setq gnus-sum-thread-tree-single-leaf "└─➤ ")
   (setq gnus-sum-thread-tree-vertical "│")
+  (setq gnus-secondary-select-methods
+	     '((nnimap "redhat"
+		      (nnimap-stream shell)
+		      (nnimap-shell-program "${pkgs.dovecot}/libexec/dovecot/imap -c ~/.config/gnus/dovecotrc-work-mbsync"))))
   :hook
   (gnus-summary-exit-hook . gnus-topic-sort-groups-by-alphabet)
-  (gnus-summary-exit-hook . gnus-group-sort-groups-by-rank)
-  :bind (:map gnus-agent-summary-mode-map
-              ("<delete>" . gnus-summary-delete-article)
-              ("n" . gnus-summary-next-article)
-              ("p" . gnus-summary-prev-article)
-              ("N" . gnus-summary-next-unread-article)
-              ("P" . gnus-summary-prev-unread-article)
-              ("M-n" . gnus-summary-next-thread)
-              ("M-p" . gnus-summary-prev-thread)
-              ("C-M-n" . gnus-summary-next-group)
-              ("C-M-p" . gnus-summary-prev-group)
-              ("C-M-^" . gnus-summary-refer-thread)))
+  (gnus-summary-exit-hook . gnus-group-sort-groups-by-rank))
 
 (use-package gnus-art
+  :straight (:type built-in)
   :after gnus
   :config
   (setq gnus-article-browse-delete-temp 'ask)
