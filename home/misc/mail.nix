@@ -66,4 +66,7 @@
     notmuch.enable = true;
     msmtp.enable = true;
   };
+
+  services.mbsync.enable = true;
+  services.mbsync.frequency = "*:0/10";
 }
