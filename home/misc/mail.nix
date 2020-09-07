@@ -59,7 +59,7 @@
         };
         account = {
           Timeout = 120;
-          PipelineDepth = 5;
+          PipelineDepth = 1;
         };
       };
     };
