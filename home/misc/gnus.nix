@@ -41,9 +41,9 @@ base_dir = ~/tmp
   (setq gnus-registry-cache-file "~/.config/gnus/gnus.registry.eld")
   (setq gnus-select-method '(nnnil))
   (setq gnus-secondary-select-methods
-	     '((nnimap ""
-		      (nnimap-stream shell)
-		      (nnimap-shell-program "${pkgs.dovecot}/libexec/dovecot/imap -c ~/.config/gnus/dovecotrc-work-mbsync"))))
+	'((nnimap ""
+		  (nnimap-stream shell)
+		  (nnimap-shell-program "${pkgs.dovecot}/libexec/dovecot/imap -c ~/.config/gnus/dovecotrc-work-mbsync"))))
   (setq gnus-startup-file "~/.config/gnus/newsrc")
   (setq gnus-use-dribble-file t)
   (setq mail-source-directory "~/.config/gnus/mail")
@@ -135,50 +135,28 @@ base_dir = ~/tmp
               ("s" . gnus-mime-save-part)
               ("o" . gnus-mime-copy-part)))
 
-(use-package all-the-icons :defer t)
-  ; :config (all-the-icons-install-fonts 'install-without-asking)
-
-;; Make mail look pretty
-(use-package all-the-icons-gnus
-  :config (all-the-icons-gnus-setup))
-
-  (use-package gnus-score
-    :straight (:type built-in)
-    :ensure gnus
-    :config
-    (setq
-     ;; Gnus article scoring entries.
-     gnus-home-score-file "~/.config/gnus/score"
-     ;; Number of days to keep score.
-     gnus-score-expiry-days 60
-     ;; Adaptive score list.
-     gnus-default-adaptive-score-alist
-     '((gnus-unread-mark)
-       (gnus-ticked-mark (from 4))
-       (gnus-dormant-mark (from 5))
-       (gnus-saved-mark (from 20) (subject 5))
-       (gnus-del-mark (from -2) (subject -5))
-       (gnus-read-mark (from 2) (subject 1))
-       (gnus-killed-mark (from -1) (subject -3)))
-     ;; Decay score over time.
-     gnus-decay-scores t
-     ;; Score decay rate.
-     gnus-score-decay-constant 1
-     gnus-score-decay-scale 0.03))
+(use-package gnus-score
+  :straight (:type built-in)
+  :ensure gnus
+  :config
+  (setq
+   ;; Gnus article scoring entries.
+   gnus-home-score-file "~/.config/gnus/score"
+   ;; Number of days to keep score.
+   gnus-score-expiry-days 60
+   ;; Adaptive score list.
+   gnus-default-adaptive-score-alist
+   '((gnus-unread-mark)
+     (gnus-ticked-mark (from 4))
+     (gnus-dormant-mark (from 5))
+     (gnus-saved-mark (from 20) (subject 5))
+     (gnus-del-mark (from -2) (subject -5))
+     (gnus-read-mark (from 2) (subject 1))
+     (gnus-killed-mark (from -1) (subject -3)))
+   ;; Decay score over time.
+   gnus-decay-scores t
+   ;; Score decay rate.
+   gnus-score-decay-constant 1
+   gnus-score-decay-scale 0.03))
   '';
 }
-
-# (setq gnus-sum-thread-tree-vertical        "│"
-#       gnus-sum-thread-tree-leaf-with-other "├─► "
-#       gnus-sum-thread-tree-single-leaf     "╰─► "
-#       gnus-summary-line-format
-#       (concat
-#        "%0{%U%R%z%}"
-#        "%3{│%}" "%1{%d%}" "%3{│%}"
-#        "  "
-#        "%4{%-20,20f%}"
-#        "  "
-#        "%3{│%}"
-#        " "
-#        "%1{%B%}"
-#        "%s\n"))
