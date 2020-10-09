@@ -85,8 +85,9 @@
       #
       export PATH="$HOME/.local/bin:$PATH"
       export PATH="$HOME/bin:$PATH"
-      export PATH="/usr/local/emacs-27/bin:$PATH"
       export PATH="/usr/local/emacs-nativecomp/bin:$PATH"
+      export PATH="/usr/local/emacs-27/bin:$PATH"
+
       # Fixes libvirt issues; https://serverfault.com/questions/803283/how-do-i-list-virsh-networks-without-sudo/803298
       export LIBVIRT_DEFAULT_URI=qemu:///system
 
