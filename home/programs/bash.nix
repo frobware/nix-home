@@ -91,6 +91,12 @@
       # Fixes libvirt issues; https://serverfault.com/questions/803283/how-do-i-list-virsh-networks-without-sudo/803298
       export LIBVIRT_DEFAULT_URI=qemu:///system
 
+      export RLWRAP=$HOME/.rlwrap
+      export PAGER="less -X -e -q -s -m"
+      export LESS="-X -e -q -s -m"
+      export BC_ENV_ARGS="$HOME/.bcrc"
+      export MANWIDTH=80
+
       # Make sure we don't import this file multiple times
       #
       export __PROFILE_SOURCED=1
