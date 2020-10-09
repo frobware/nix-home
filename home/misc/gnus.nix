@@ -41,9 +41,9 @@ base_dir = ~/tmp
   (setq gnus-registry-cache-file "~/.config/gnus/gnus.registry.eld")
   (setq gnus-select-method '(nnnil))
   (setq gnus-secondary-select-methods
-	'((nnimap ""
-		  (nnimap-stream shell)
-		  (nnimap-shell-program "${pkgs.dovecot}/libexec/dovecot/imap -c ~/.config/gnus/dovecotrc-work-mbsync"))))
+  '((nnimap ""
+      (nnimap-stream shell)
+      (nnimap-shell-program "${pkgs.dovecot}/libexec/dovecot/imap -c ~/.config/gnus/dovecotrc-work-mbsync"))))
   (setq gnus-startup-file "~/.config/gnus/newsrc")
   (setq gnus-use-dribble-file t)
   (setq mail-source-directory "~/.config/gnus/mail")
@@ -158,5 +158,10 @@ base_dir = ~/tmp
    ;; Score decay rate.
    gnus-score-decay-constant 1
    gnus-score-decay-scale 0.03))
+
+  (eval-after-load "mm-decode"
+    '(progn
+       (add-to-list 'mm-discouraged-alternatives "text/html")
+       (add-to-list 'mm-discouraged-alternatives "text/richtext")))
   '';
 }

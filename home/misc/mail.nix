@@ -68,5 +68,5 @@
   };
 
   services.mbsync.enable = true;
-  services.mbsync.frequency = "*:0/10";
+  services.mbsync.frequency = "*:0/5";
 }
