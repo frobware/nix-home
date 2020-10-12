@@ -92,8 +92,7 @@
       export LIBVIRT_DEFAULT_URI=qemu:///system
 
       export RLWRAP=$HOME/.rlwrap
-      export PAGER="less -X -e -q -s -m"
-      export LESS="-X -e -q -s -m"
+      export LESS="--no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
       export BC_ENV_ARGS="$HOME/.bcrc"
       export MANWIDTH=80
 
