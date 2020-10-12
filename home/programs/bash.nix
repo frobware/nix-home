@@ -3,9 +3,10 @@
 {
   home.packages = [ pkgs.bash-completion ];
 
+  programs.autojump.enable = true;
+
   programs.bash = {
     enable = true;
-    enableAutojump = true;
     historyFileSize = 2000;
     historySize = 1000;
     initExtra = ''
