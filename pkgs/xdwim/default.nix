@@ -20,8 +20,8 @@ rustPlatform.buildRustPackage rec {
     owner = "frobware";
     repo = pname;
     rev = version;
-    sha256 = "1irrnvz5m676n3wsybgr2gj54ap0gh066666wx8j1flkg16d9sv4";
+    sha256 = "sha256:0ckfbcq24m55br9iylcx50a9g7x89hkfqh26dxn0y0i1hbpya6pr";
   };
 
-  cargoSha256 = "1r353ap8dslsahb2gw8x90c3jmpdnx41116wzgqzbz4vps9vqr2h";
+  cargoSha256 = "sha256:1dansavnpp61mc65lbr4jbi45y6r0yki7h8xna42gxhxw5hsk9g9";
 }
