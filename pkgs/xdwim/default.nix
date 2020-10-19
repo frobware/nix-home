@@ -2,7 +2,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "xdwim";
-  version = "master";
+  version = "8724b19f3e56bb458fa0d4ecd6959edd35792b0f";
 
   buildInputs = with pkgs; [
     binutils
@@ -20,8 +20,8 @@ rustPlatform.buildRustPackage rec {
     owner = "frobware";
     repo = pname;
     rev = version;
-    sha256 = "sha256:0ckfbcq24m55br9iylcx50a9g7x89hkfqh26dxn0y0i1hbpya6pr";
+    sha256 = "sha256:1imqaygr24ndilrrgsd87kl64n2baiwx0f4nh618bmy88c4cvcl7";
   };
 
-  cargoSha256 = "sha256:1dansavnpp61mc65lbr4jbi45y6r0yki7h8xna42gxhxw5hsk9g9";
+  cargoSha256 = "sha256:0bzv6sfl3g9r4qnrvjdqskhpwq4d8nl2f4jxrpqmiv286f2nw4f5";
 }
