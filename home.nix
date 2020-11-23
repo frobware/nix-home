@@ -28,6 +28,9 @@
       pkgs.rlwrap
       pkgs.ncdu
 
+      pkgs.idea.idea-community
+      pkgs.idea.goland
+
       # Mail
       pkgs.afew
       pkgs.isync
@@ -57,8 +60,8 @@
       pkgs.watchexec
 
       # Browsers
-      # pkgs.google-chrome
-      # pkgs.firefox
+      pkgs.google-chrome
+      pkgs.firefox
 
       # Development tools
       pkgs.gnumake
@@ -152,6 +155,8 @@
       # pkgs.source-sans-pro
       # pkgs.source-serif-pro
       # pkgs.twemoji-color-font
+
+      pkgs.emacsGcc
     ];
 
     sessionVariables = {
