@@ -169,7 +169,7 @@
       NOTMUCH_CONFIG = "${config.xdg.configHome}/notmuch/notmuchrc";
 
       # https://github.com/NixOS/nixpkgs/issues/58132
-      GIT_SSH = "/usr/bin/ssh";
+      # GIT_SSH = "/usr/bin/ssh";
     };
 
     # keyboard.options = [ "caps:ctrl_modifier" ];
