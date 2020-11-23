@@ -64,7 +64,7 @@ in {
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/chrome" = {
           binding = "<Control><Alt><Shift>n";
           name = "Chrome";
-          command = "${pkgs.xdwim}/bin/rxdwimctl google-chrome google-chrome";
+          command = "${pkgs.xdwim}/bin/rxdwimctl google-chrome ${pkgs.google-chrome}/bin/google-chrome-stable";
         };
 
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/invert" = {
