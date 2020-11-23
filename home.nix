@@ -30,6 +30,7 @@
 
       pkgs.idea.idea-community
       pkgs.idea.goland
+      pkgs.slack
 
       # Mail
       pkgs.afew
