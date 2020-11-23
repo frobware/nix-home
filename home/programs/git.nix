@@ -14,6 +14,10 @@
       user = "frobware";
     };
 
+    extraConfig = {
+      credential.helper = "libsecret";
+    };
+
     # "protocol \"keybase\"" = {
     #   allow = "always";
     # };
