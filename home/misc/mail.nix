@@ -46,7 +46,7 @@
     userName = "amcdermo@redhat.com";
     imap.host = "imap.gmail.com";
     smtp.host = "smtp.gmail.com";
-    passwordCommand = "pass rhat/app-password/gnus";
+    passwordCommand = "${pkgs.pass}/bin/pass rhat/app-password/gnus";
     primary = true;
     mbsync = {
       enable = true;
