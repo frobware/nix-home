@@ -9,4 +9,5 @@ rec {
   # goreftools = callPackage ./goreftools {};
   gomodifytags = callPackage ./gomodifytags {};
   goimpl = callPackage ./goimpl {};
+  oc = callPackage ./oc {};
 }

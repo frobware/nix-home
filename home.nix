@@ -133,6 +133,8 @@
       pkgs.gotools
       pkgs.gotop
 
+      pkgs.oc
+
       # X11
       pkgs.wmctrl
       pkgs.xclip
