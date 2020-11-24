@@ -29,7 +29,7 @@ base_dir = ~/tmp
 (use-package gnus
   :straight (:type built-in)
   :config
-  (setq gnus-agent t)
+  (setq gnus-agent nil)
   (setq gnus-always-read-dribble-file t)
   (setq gnus-article-save-directory "~/.config/gnus/news")
   (setq gnus-cache-directory "~/.config/gnus/news/cache")
