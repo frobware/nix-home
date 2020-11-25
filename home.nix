@@ -220,9 +220,8 @@
   #   package = pkgs.emacs;
   #   extraPackages = epkgs: with epkgs; [ melpaStablePackages.emacsql-sqlite emacs-libvterm pdf-tools elisp-ffi exwm ];
   # };
-
   services.gpg-agent = {
-    enable = false;
+    enable = true;
     enableSshSupport = true;
     grabKeyboardAndMouse = false;
     pinentryFlavor = "tty";
