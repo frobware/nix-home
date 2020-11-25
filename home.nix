@@ -158,8 +158,6 @@
       # pkgs.source-sans-pro
       # pkgs.source-serif-pro
       # pkgs.twemoji-color-font
-
-      pkgs.emacsGcc
     ];
 
     sessionVariables = {
@@ -249,6 +247,12 @@
     Install = {
       WantedBy = [ "default.target" ];
     };
+  };
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs;
+    extraPackages = (epkgs: [ epkgs.vterm ] );
   };
 
   profiles.gnome.enable = true;
