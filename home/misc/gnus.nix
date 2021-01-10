@@ -128,6 +128,8 @@ base_dir = ~/tmp
           "Followup-To:" "Reply-To:" "^Organization:" "^X-Newsreader:"
           "^X-Mailer:"))
   (setq gnus-sorted-header-list gnus-visible-headers)
+  (setq gnus-extra-headers '(To Cc)
+      nnmail-extra-headers gnus-extra-headers)
   :hook (gnus-article-mode-hook . (lambda ()
                                     (setq-local fill-column 80)))
   :bind (:map gnus-article-mode-map

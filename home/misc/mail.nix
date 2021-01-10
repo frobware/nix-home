@@ -13,6 +13,8 @@
   programs.mbsync.enable = true;
   programs.msmtp.enable = true;
 
+  accounts.email.certificatesFile = "/etc/ssl/certs/ca-bundle.trust.crt";
+
   accounts.email.accounts."amcdermo@redhat.com" = {
     address = "amcdermo@redhat.com";
     realName = "Andrew McDermott";

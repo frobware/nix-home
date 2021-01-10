@@ -30,7 +30,7 @@
 
       pkgs.idea.idea-community
       pkgs.idea.goland
-      pkgs.slack
+      #pkgs.slack
 
       # Mail
       pkgs.afew
@@ -44,6 +44,8 @@
       pkgs.google-cloud-sdk
       pkgs.azure-cli
       pkgs.doctl
+
+#      pkgs.npm2nix
 
       # Shell
       pkgs.shfmt
@@ -61,8 +63,8 @@
       pkgs.watchexec
 
       # Browsers
-      pkgs.google-chrome
-      pkgs.firefox
+      # pkgs.google-chrome
+      # pkgs.firefox
 
       # Development tools
       pkgs.gnumake
@@ -116,6 +118,10 @@
       pkgs.xsv                  # csv
       pkgs.zenith               # top
 
+      # Kube development
+      pkgs.cfssl
+      pkgs.etcd
+
       # Go
       pkgs.delve
       pkgs.errcheck
@@ -124,7 +130,7 @@
       pkgs.go2nix
       pkgs.gocode
       pkgs.godef
-      pkgs.goimpl
+      #pkgs.goimpl
       pkgs.golangci-lint
       pkgs.golint
       pkgs.gomodifytags
@@ -132,8 +138,6 @@
       pkgs.gotags
       pkgs.gotools
       pkgs.gotop
-
-      pkgs.oc
 
       # X11
       pkgs.wmctrl
@@ -169,11 +173,11 @@
       NOTMUCH_CONFIG = "${config.xdg.configHome}/notmuch/notmuchrc";
 
       # https://github.com/NixOS/nixpkgs/issues/58132
-      # GIT_SSH = "/usr/bin/ssh";
+      GIT_SSH = "/usr/bin/ssh";
     };
 
-    # keyboard.options = [ "caps:ctrl_modifier" ];
-    # keyboard.layout = [ "emacs2" ];
+    keyboard.options = [ "caps:ctrl_modifier" ];
+    keyboard.layout = [ "emacs2" ];
   };
 
   programs.direnv.enable = true;
@@ -248,11 +252,11 @@
     };
   };
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs;
-    extraPackages = (epkgs: [ epkgs.vterm ] );
-  };
+  # programs.emacs = {
+  #   enable = true;
+  #   package = pkgs.emacs;
+  #   extraPackages = (epkgs: [ epkgs.vterm ] );
+  # };
 
   profiles.gnome.enable = true;
   
