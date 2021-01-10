@@ -3,7 +3,7 @@
 {
   imports = import home/module-list.nix;
 
-  targets.genericLinux.enable = true;
+  # targets.genericLinux.enable = true;
 
   nixpkgs.config = import ./config.nix;
 
@@ -13,7 +13,6 @@
   };
 
   programs.command-not-found.enable = true;
-  programs.chromium.enable = true;
 
   home = {
     extraOutputsToInstall = [ "man" ];
@@ -68,7 +67,6 @@
 
       # Development tools
       pkgs.gnumake
-      pkgs.strace
       pkgs.yaml-language-server
       pkgs.cmake
       pkgs.shellcheck
@@ -91,8 +89,6 @@
       pkgs.hunspellDicts.en-us
       pkgs.ispell
       pkgs.languagetool
-
-      # jetbrains.idea-ultimate
 
       # k8s
       pkgs.fluxctl
@@ -224,33 +220,33 @@
   #   package = pkgs.emacs;
   #   extraPackages = epkgs: with epkgs; [ melpaStablePackages.emacsql-sqlite emacs-libvterm pdf-tools elisp-ffi exwm ];
   # };
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-    grabKeyboardAndMouse = false;
-    pinentryFlavor = "tty";
-    extraConfig = ''
-      allow-loopback-pinentry
-      allow-emacs-pinentry
-    '';
-  };
+  # services.gpg-agent = {
+  #   enable = true;
+  #   enableSshSupport = true;
+  #   grabKeyboardAndMouse = false;
+  #   pinentryFlavor = "tty";
+  #   extraConfig = ''
+  #     allow-loopback-pinentry
+  #     allow-emacs-pinentry
+  #   '';
+  # };
 
-  systemd.user.services.languagetool-http-server = {
-    Unit = {
-      Description = "languagetool-http-server";
-    };
+  # systemd.user.services.languagetool-http-server = {
+  #   Unit = {
+  #     Description = "languagetool-http-server";
+  #   };
 
-    Service = {
-      ExecStart = "${pkgs.languagetool}/bin/languagetool-http-server";
-      ExecReload = "${pkgs.languagetool}/bin/languagetool-http-server";
-      Restart = "always";
-      RestartSec = 12;
-    };
+  #   Service = {
+  #     ExecStart = "${pkgs.languagetool}/bin/languagetool-http-server";
+  #     ExecReload = "${pkgs.languagetool}/bin/languagetool-http-server";
+  #     Restart = "always";
+  #     RestartSec = 12;
+  #   };
 
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
+  #   Install = {
+  #     WantedBy = [ "default.target" ];
+  #   };
+  # };
 
   # programs.emacs = {
   #   enable = true;
@@ -258,8 +254,8 @@
   #   extraPackages = (epkgs: [ epkgs.vterm ] );
   # };
 
-  profiles.gnome.enable = true;
-  
+  # profiles.gnome.enable = true;
+
   systemd.user.startServices = true;
 
   # This value determines the Home Manager release that your

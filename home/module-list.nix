@@ -7,7 +7,7 @@
 
   profiles/gnome.nix
   profiles/xdwim.nix
-  
+
   programs/bash.nix
   programs/chromium.nix
   programs/firefox.nix
