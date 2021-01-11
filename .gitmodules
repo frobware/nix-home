@@ -10,6 +10,10 @@
 	path = channels/nixos
 	url = https://github.com/NixOS/nixpkgs-channels.git
 	branch = nixos-20.09
+[submodule "channels/nixpkgs"]
+	path = channels/nixpkgs
+	url = https://github.com/NixOS/nixpkgs.git
+	branch = nixpkgs-20.09
 [submodule "channels/nixpkgs-unstable"]
 	path = channels/nixpkgs-unstable
 	url = https://github.com/NixOS/nixpkgs.git
@@ -29,4 +33,4 @@
 	branch = master
 [submodule "channels/morph"]
 	path = channels/morph
-	url = https://github.com:DBCDK/morph.git
+	url = https://github.com/DBCDK/morph.git

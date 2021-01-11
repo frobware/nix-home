@@ -127,6 +127,7 @@ Accept the defaults, answering 'y' to integrating wuth /etc/bash and /etc/zsh*
 
 	(cd ~/.nixpkgs; rm -f darwin-configuration.nix configuration.nix; ln -s ../..config/nixpkgs/darwin/configuration.nix)
     darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
+    darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/configuration.nix
 
 # Fixes
 
@@ -143,6 +144,7 @@ Accept the defaults, answering 'y' to integrating wuth /etc/bash and /etc/zsh*
 
 1. https://github.com/NixOS/nix/issues/2982
 
-
+# Busted
 
 nix-shell -p nix-info --run "nix-info -m"
+
