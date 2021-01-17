@@ -6,6 +6,7 @@
     ../config/aws2.nix
     ../config/azure.nix
     ../config/gcloud.nix
+    ../config/go.nix
     ../profiles/desktop.nix
   ];
 
