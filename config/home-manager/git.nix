@@ -17,10 +17,6 @@
     extraConfig = {
       credential.helper = "libsecret";
     };
-
-    # "protocol \"keybase\"" = {
-    #   allow = "always";
-    # };
   };
 
   home.packages = with pkgs; [

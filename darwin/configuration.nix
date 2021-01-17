@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ <home-manager/nix-darwin> ];
+  imports = [
+    <home-manager/nix-darwin>
+    ../config/go.nix
+  ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -42,10 +45,11 @@
     pkgs.azure-cli
     pkgs.pass
 
-    pkgs.go
-    pkgs.goimports
-    pkgs.gopls
-    pkgs.jq
+    # pkgs.go
+    # pkgs.goimports
+    # pkgs.gopls
+    # pkgs.jq
+    # pkgs.yq
 
     pkgs.mtr
 

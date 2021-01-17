@@ -131,7 +131,7 @@ Accept the defaults, answering 'y' to integrating wuth /etc/bash and /etc/zsh*
 
 # Fixes
 
-    export NIX_PATH=darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix:$HOME/.nix-defexpr/channels
+    export NIX_PATH=darwin-config=$HOME/.config/nixpkgs/configuration.nix:$HOME/.nix-defexpr/channels
 
 # References
 
@@ -148,3 +148,13 @@ Accept the defaults, answering 'y' to integrating wuth /etc/bash and /etc/zsh*
 
 nix-shell -p nix-info --run "nix-info -m"
 
+# /etc/hosts
+
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+::1             localhost
