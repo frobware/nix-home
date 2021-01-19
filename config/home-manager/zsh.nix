@@ -5,7 +5,6 @@
     enable = true;
 
     dotDir = ".config/zsh";
-    enableCompletion = false;
     enableAutosuggestions = true;
 
     defaultKeymap = "emacs";

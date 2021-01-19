@@ -1,0 +1,10 @@
+{ lib, pkgs, ... }:
+
+{
+  imports = [
+    ./home-manager/bash.nix
+    ./home-manager/git.nix
+    ./home-manager/tmux.nix
+    ./home-manager/zsh.nix
+  ];
+}

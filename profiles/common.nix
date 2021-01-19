@@ -12,17 +12,18 @@ in
   imports = flatten [
     (optional isLinux ./hosts.nix)
     (optional isLinux ./../config/ssh.nix)
+    ./users.nix
   ];
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  programs.zsh = {
-    enable = true;
+  # programs.zsh = {
+  #   enable = true;
 
-    # Prevent NixOS from clobbering prompts
-    # See: https://github.com/NixOS/nixpkgs/pull/38535
-    promptInit = lib.mkDefault "";
-  };
+  #   # Prevent NixOS from clobbering prompts
+  #   # See: https://github.com/NixOS/nixpkgs/pull/38535
+  #   promptInit = lib.mkDefault "";
+  # };
 
 } //
 
@@ -72,8 +73,10 @@ mkMerge [
 
   (optionalAttrs isDarwin {
     environment.systemPackages = with pkgs; [
+      bash
       coreutils
       htop
+      gnutar                    # required for kube development
     ];
 
     system.stateVersion = 4;
