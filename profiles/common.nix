@@ -34,6 +34,8 @@ mkMerge [
         ag
         curl
         jq
+        less
+        mercurial
         mosh
         pass
         tmux

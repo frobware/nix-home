@@ -6,7 +6,8 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    #vim
+    less
+    vim
   ];
 
   boot.cleanTmpDir = true;

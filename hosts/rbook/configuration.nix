@@ -3,6 +3,7 @@
 {
   imports = [
     ../../profiles/workstation.nix
+    ../../profiles/desktop.nix
   ];
 
   # https://github.com/LnL7/nix-darwin/issues/165#issuecomment-749682749
@@ -20,42 +21,6 @@
 
   nixpkgs.config.allowUnsupportedSystem = false;
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = [
-    # pkgs.ag
-    # #pkgs.emacs
-    # pkgs.vim
-    # pkgs.wget
-    # pkgs.home-manager
-    # pkgs.gnupg
-    # pkgs.direnv
-    # pkgs.pinentry
-    # pkgs.alacritty
-    # pkgs.pinentry_mac
-    # # pkgs.pinentry
-
-    # pkgs.autoconf
-    # pkgs.watchexec
-
-    # pkgs.awscli2
-    # pkgs.google-cloud-sdk
-    # pkgs.azure-cli
-    # pkgs.pass
-
-    # # pkgs.go
-    # # pkgs.gopls
-    # # pkgs.goimports
-
-    # pkgs.htop
-    # pkgs.tmux
-
-    # pkgs.tree
-
-    # # pkgs.rust
-    # # pkgs.cargo
-    # pkgs.wireshark
-    # pkgs.termshark
-  ];
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
