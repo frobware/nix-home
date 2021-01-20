@@ -28,15 +28,15 @@
       VISUAL = "emacsclient -c -a vi";
       LC_CTYPE = "en_US.UTF-8";
       LESS = "-FRSXM";
-      PROMPT = "%m %~ $ ";
-      PROMPT_DIRTRIM = "2";
-#     PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
+      PROMPT = "$ %m %B%F{240}%4~%f%b\n$ ";
+      RPROMPT = "";
+      #PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
     };
 
     profileExtra = ''
       export GPG_TTY=$(tty)
       if ! pgrep -x "gpg-agent" > /dev/null; then
-      ${pkgs.gnupg}/bin/gpgconf --launch gpg-agent
+          ${pkgs.gnupg}/bin/gpgconf --launch gpg-agent
       fi
 
       setopt extended_glob
@@ -52,9 +52,9 @@
     initExtra = pkgs.lib.mkBefore ''
       export SSH_AUTH_SOCK=$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)
       if [[ $TERM == dumb || $TERM == emacs || ! -o interactive ]]; then
-      unsetopt zle
-      unset zle_bracketed_paste
-      export PS1='%m %~ $ '
+          unsetopt zle
+          unset zle_bracketed_paste
+          export PS1='%m %~ $ '
       fi
     '';
   };
