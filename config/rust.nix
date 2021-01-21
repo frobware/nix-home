@@ -8,6 +8,7 @@
     rustc
 
     # Rust-based coreutils
+    as-tree
     dust                 # du
     exa                  # ls
     fd                   # find

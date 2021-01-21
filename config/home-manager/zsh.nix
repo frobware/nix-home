@@ -1,18 +1,32 @@
 { config, pkgs, ... }:
 
 {
+  programs.bat.enable = true;
+  xdg.enable = true;
+
+  programs.fzf.enable = true;
+  programs.fzf.enableZshIntegration = true;
+
   programs.zsh = rec {
     enable = true;
 
     dotDir = ".config/zsh";
+    enableCompletion = true;
     enableAutosuggestions = true;
-
     defaultKeymap = "emacs";
+    history.extended = true;
 
-    # enableFzfCompletion = true;
-    # enableFzfGit = true;
-    # enableFzfHistory = true;
-    # enableSyntaxHighlighting = true;
+    plugins = [
+      {
+        name = "zsh-autosuggestions";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-autosuggestions";
+          rev = "v0.6.3";
+          sha256 = "1h8h2mz9wpjpymgl2p7pc146c1jgb3dggpvzwm9ln3in336wl95c";
+        };
+      }
+    ];
 
     history = {
       size = 50000;
@@ -36,7 +50,7 @@
     profileExtra = ''
       export GPG_TTY=$(tty)
       if ! pgrep -x "gpg-agent" > /dev/null; then
-          ${pkgs.gnupg}/bin/gpgconf --launch gpg-agent
+      ${pkgs.gnupg}/bin/gpgconf --launch gpg-agent
       fi
 
       setopt extended_glob
@@ -52,9 +66,9 @@
     initExtra = pkgs.lib.mkBefore ''
       export SSH_AUTH_SOCK=$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)
       if [[ $TERM == dumb || $TERM == emacs || ! -o interactive ]]; then
-          unsetopt zle
-          unset zle_bracketed_paste
-          export PS1='%m %~ $ '
+      unsetopt zle
+      unset zle_bracketed_paste
+      export PS1='%m %~ $ '
       fi
     '';
   };

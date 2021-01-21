@@ -32,6 +32,7 @@ mkMerge [
     environment.systemPackages =
       (with pkgs; [
         ag
+        bat
         curl
         jq
         less
