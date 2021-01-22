@@ -41,6 +41,7 @@ mkMerge [
         pass
         tmux
         vim
+        watch
         wget
         yq
       ])
@@ -78,6 +79,7 @@ mkMerge [
     environment.systemPackages = with pkgs; [
       bash
       coreutils
+      moreutils
       htop
       gnutar                    # required for kube development
     ];
