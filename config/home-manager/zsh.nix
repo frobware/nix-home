@@ -61,6 +61,13 @@
 
       setopt autocd autopushd pushdignoredups no_beep
       bindkey -e
+
+      autoload -Uz compinit
+      compinit
+
+      if type -p oc >/dev/null 2>&1; then
+          source <(oc completion zsh)
+      fi
     '';
 
     initExtra = pkgs.lib.mkBefore ''
