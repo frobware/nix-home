@@ -5,6 +5,11 @@
 
   # targets.genericLinux.enable = true;
 
+  # Home Manager needs a bit of information about you and the
+  # paths it should manage.
+  home.username = "aim";
+  home.homeDirectory = "/home/aim";
+
   nixpkgs.config = import ./config.nix;
 
   programs.home-manager = {
@@ -27,8 +32,8 @@
       pkgs.rlwrap
       pkgs.ncdu
 
-      pkgs.idea.idea-community
-      pkgs.idea.goland
+      # pkgs.idea.idea-community
+      # pkgs.idea.goland
       #pkgs.slack
 
       # Mail
@@ -67,7 +72,7 @@
 
       # Development tools
       pkgs.gnumake
-      pkgs.yaml-language-server
+      # pkgs.yaml-language-server
       pkgs.cmake
       pkgs.shellcheck
       pkgs.clang-tools
@@ -254,17 +259,17 @@
   #   extraPackages = (epkgs: [ epkgs.vterm ] );
   # };
 
-  # profiles.gnome.enable = true;
+  profiles.gnome.enable = true;
 
   systemd.user.startServices = true;
 
   # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage when a
-  # new Home Manager release introduces backwards incompatible
-  # changes.
+  # configuration is compatible with. This helps avoid breakage
+  # when a new Home Manager release introduces backwards
+  # incompatible changes.
   #
-  # You can update Home Manager without changing this value. See the
-  # Home Manager release notes for a list of state version changes in
-  # each release.
-  home.stateVersion = "19.09";
+  # You can update Home Manager without changing this value. See
+  # the Home Manager release notes for a list of state version
+  # changes in each release.
+  home.stateVersion = "21.03";
 }
