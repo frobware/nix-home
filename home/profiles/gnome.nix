@@ -83,6 +83,12 @@ in {
           command = "${pkgs.xdwim}/bin/rxdwimctl Gnome-terminal gnome-terminal";
           name = "Terminal";
         };
+
+        "org/gnome/desktop/peripherals/keyboard" = {
+          repeat = true;
+          delay = hm.gvariant.mkUint32 250;
+          repeat-interval = hm.gvariant.mkUint32 20;
+        };
       };
     };
 
