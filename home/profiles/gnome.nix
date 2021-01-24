@@ -89,6 +89,11 @@ in {
           delay = hm.gvariant.mkUint32 250;
           repeat-interval = hm.gvariant.mkUint32 20;
         };
+
+        "org/gnome/shell/extensions/dash-to-dock" = {
+          dock-fixed = false;
+          dock-position = "RIGHT";
+        };
       };
     };
 
