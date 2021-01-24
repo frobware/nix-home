@@ -14,7 +14,6 @@
 
   programs.home-manager = {
     enable = true;
-    path = "./home-manager";
   };
 
   programs.command-not-found.enable = true;
@@ -218,46 +217,6 @@
       extraConfig = "set -g @sidebar-tree-command 'tree -C'";
     }];
   };
-
-  # programs.emacs = {
-  #   enable = true;
-  #   #package = pkgs.emacs-overlay.emacsGit;
-  #   package = pkgs.emacs;
-  #   extraPackages = epkgs: with epkgs; [ melpaStablePackages.emacsql-sqlite emacs-libvterm pdf-tools elisp-ffi exwm ];
-  # };
-  # services.gpg-agent = {
-  #   enable = true;
-  #   enableSshSupport = true;
-  #   grabKeyboardAndMouse = false;
-  #   pinentryFlavor = "tty";
-  #   extraConfig = ''
-  #     allow-loopback-pinentry
-  #     allow-emacs-pinentry
-  #   '';
-  # };
-
-  # systemd.user.services.languagetool-http-server = {
-  #   Unit = {
-  #     Description = "languagetool-http-server";
-  #   };
-
-  #   Service = {
-  #     ExecStart = "${pkgs.languagetool}/bin/languagetool-http-server";
-  #     ExecReload = "${pkgs.languagetool}/bin/languagetool-http-server";
-  #     Restart = "always";
-  #     RestartSec = 12;
-  #   };
-
-  #   Install = {
-  #     WantedBy = [ "default.target" ];
-  #   };
-  # };
-
-  # programs.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacs;
-  #   extraPackages = (epkgs: [ epkgs.vterm ] );
-  # };
 
   profiles.gnome.enable = true;
 
