@@ -3,7 +3,6 @@
 let
 
   inherit (lib) optional flatten;
-  # inherit (import ../channels) __nixPath;
   inherit (lib.systems.elaborate { system = builtins.currentSystem; }) isLinux isDarwin;
 
 in

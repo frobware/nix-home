@@ -64,7 +64,6 @@ mkMerge [
       whois
     ];
 
-    networking.wireguard.enable = true;
     services.ntp.enable = true;
 
     console = {

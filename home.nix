@@ -1,16 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = import home/module-list.nix;
+  imports = [
+    nix/auto-host.nix
+  ];
 
-  # targets.genericLinux.enable = true;
-
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "aim";
-  home.homeDirectory = "/home/aim";
-
-  nixpkgs.config = import ./config.nix;
+  nixpkgs.config = import nix/config.nix;
 
   programs.home-manager = {
     enable = true;

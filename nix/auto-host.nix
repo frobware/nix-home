@@ -11,8 +11,6 @@ let
 in
 
 {
-  networking.hostName = hostName;
-
   imports = flatten [
     (../. + "/hosts/${hostName}/configuration.nix")
     (optionalPath (../. + "/hosts/${hostName}/hardware-configuration.nix"))
