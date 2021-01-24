@@ -25,7 +25,6 @@ in {
           enable-hot-corners = false;
           cursor-blink = false;
           cursor-size = 96;
-          monospace-font-name = "Source Code Pro Semibold 14";
           text-scaling-factor = 1.25;
           enable-animations = false;
           gtk-key-theme = "Emacs";
