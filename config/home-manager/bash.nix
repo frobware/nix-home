@@ -103,8 +103,6 @@
     '';
     shellAliases = {
       h = "history 20";
-      ls = "ls --color=no";
-      lst = "ls -trl";
       more = "less";
     };
     shellOptions = [
