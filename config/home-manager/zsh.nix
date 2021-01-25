@@ -62,6 +62,14 @@
       setopt autocd autopushd pushdignoredups no_beep
       bindkey -e
 
+      # HIST_VERIFY
+      # Whenever the user enters a line with history expansion, don't
+      # execute the line directly; instead, perform history expansion
+      # and reload the line into the editing buffer.
+      #
+      # Allow me to mkdir foo; cd !$
+      setopt no_hist_verify
+
       autoload -Uz compinit
       compinit
 
