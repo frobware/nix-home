@@ -94,6 +94,10 @@ in {
           dock-fixed = false;
           dock-position = "RIGHT";
         };
+
+        "org/gnome/desktop/peripherals/touchpad" = {
+          tap-to-click = false;
+        };
       };
     };
 

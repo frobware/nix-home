@@ -7,6 +7,9 @@
 
   nixpkgs.config = import nix/config.nix;
 
+  home.username = "aim";
+  home.homeDirectory = "/home/aim";
+
   programs.home-manager = {
     enable = true;
   };
