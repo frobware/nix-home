@@ -58,7 +58,7 @@
 
   home-manager.useUserPackages = true;
 
-  home-manager.users.amcdermo = { pkgs, ... }: {
+  home-manager.users.amcdermo = {
     programs.direnv.enable = true;
     programs.autojump.enable = true;
 
