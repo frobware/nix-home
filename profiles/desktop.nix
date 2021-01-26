@@ -24,5 +24,6 @@ in
   environment.systemPackages = with pkgs; [
     mercurial
     ncdu
+    gnupg
   ];
 }
