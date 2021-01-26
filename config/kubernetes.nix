@@ -12,5 +12,8 @@
     cfssl
     etcd
     gnutar                      # on darwin
+
+    mktemp
+    coreutils
   ];
 }
