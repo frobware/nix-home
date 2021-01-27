@@ -25,6 +25,7 @@ in
     mercurial
     ncdu
     gnupg
+    podman
     diffutils
   ];
 }
