@@ -25,5 +25,6 @@ in
     mercurial
     ncdu
     gnupg
+    diffutils
   ];
 }
