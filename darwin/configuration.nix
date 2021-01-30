@@ -131,8 +131,6 @@
     documentation.info.enable = true;
     documentation.doc.enable = true;
 
-    home-manager.useUserPackages = true;
-
     home-manager.users.amcdermo = { pkgs, ... }: {
       programs.direnv.enable = true;
 

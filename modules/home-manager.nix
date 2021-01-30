@@ -12,6 +12,4 @@ in
     (optional isDarwin <home-manager/nix-darwin>)
     (optional isLinux <home-manager/nixos>)
   ];
-
-  home-manager.useUserPackages = true;
 }
