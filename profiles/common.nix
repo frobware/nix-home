@@ -44,6 +44,8 @@ mkMerge [
         watch
         wget
         yq
+        lieer
+        notmuch
       ])
 
       ++
