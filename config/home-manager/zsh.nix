@@ -58,12 +58,9 @@
       # Allow me to mkdir foo; cd !$
       setopt no_hist_verify
 
-      autoload -Uz compinit
-      compinit
-
-      if type -p oc >/dev/null 2>&1; then
-          source <(oc completion zsh)
-      fi
+      # if type -p oc >/dev/null 2>&1; then
+      #     source <(oc completion zsh)
+      # fi
     '';
 
     initExtra = pkgs.lib.mkBefore ''
