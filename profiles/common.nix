@@ -46,6 +46,7 @@ mkMerge [
         yq
         lieer
         notmuch
+        socat
       ])
 
       ++
