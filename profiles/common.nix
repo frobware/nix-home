@@ -44,9 +44,13 @@ mkMerge [
         watch
         wget
         yq
+        socat
+
+        # Mail
         lieer
         notmuch
-        socat
+        isync
+        dovecot
       ])
 
       ++
