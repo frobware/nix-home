@@ -36,10 +36,10 @@
     };
 
     profileExtra = ''
-      export GPG_TTY=$(tty)
-      if ! pgrep -x "gpg-agent" > /dev/null; then
-      ${pkgs.gnupg}/bin/gpgconf --launch gpg-agent
-      fi
+      # export GPG_TTY=$(tty)
+      # if ! pgrep -x "gpg-agent" > /dev/null; then
+      # ${pkgs.gnupg}/bin/gpgconf --launch gpg-agent
+      # fi
 
       setopt extended_glob
 
@@ -49,6 +49,9 @@
 
       setopt autocd autopushd pushdignoredups no_beep
       bindkey -e
+
+      # put completions below the prompt
+      unsetopt ALWAYS_LAST_PROMPT
 
       # HIST_VERIFY
       # Whenever the user enters a line with history expansion, don't
@@ -64,12 +67,12 @@
     '';
 
     initExtra = pkgs.lib.mkBefore ''
-      export SSH_AUTH_SOCK=$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)
-      if [[ $TERM == dumb || $TERM == emacs || ! -o interactive ]]; then
-      unsetopt zle
-      unset zle_bracketed_paste
-      export PS1='%m %~ $ '
-      fi
+      # export SSH_AUTH_SOCK=$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)
+      # if [[ $TERM == dumb || $TERM == emacs || ! -o interactive ]]; then
+      # unsetopt zle
+      # unset zle_bracketed_paste
+      # export PS1='%m %~ $ '
+      # fi
     '';
   };
 }
