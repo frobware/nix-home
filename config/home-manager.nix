@@ -6,5 +6,6 @@
     ./home-manager/git.nix
     ./home-manager/tmux.nix
     ./home-manager/zsh.nix
+    ./home-manager/alacritty.nix
   ];
 }
