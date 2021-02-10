@@ -8,13 +8,32 @@ let
 in
 
 {
+  # For remapping Alacritty bindings you can see what Alacritty receives
+  # by running alacritty --print-events | grep "WindowEvent.*KeyboardInput".
   programs.alacritty = {
     enable = true;
-
-# For remapping Alacritty bindings you can see what Alacritty receives
-# by running alacritty --print-events | grep "WindowEvent.*KeyboardInput".
-
     settings = {
+      # shell = {
+      #   program = "tmux";
+      #   args = [
+      #     "new-session"
+      #     "-A"
+      #     "-s"
+      #     "main"
+      #   ];
+      # };
+
+      # Window decorations
+      #
+      # Values for `decorations`:
+      #     - full: Borders and title bar
+      #     - none: Neither borders nor title bar
+      #
+      # Values for `decorations` (macOS only):
+      #     - transparent: Title bar, transparent background and title bar buttons
+      #     - buttonless: Title bar, transparent background, but no title bar buttons
+      decorations = "full";
+
       window = {
         dimensions = {
           columns = 0;
@@ -22,10 +41,72 @@ in
         };
 
         class = "Alacritty";
-        decorations = "buttonless";
         dynamic_padding = true;
         startup_mode = "Maximized";
         title = "Terminal";
+      };
+
+      mouse = {
+        # Click settings
+        #
+        # The `double_click` and `triple_click` settings control the time
+        # alacritty should wait for accepting multiple clicks as one double
+        # or triple click.
+        double_click = { threshold = 300; };
+        triple_click = { threshold = 300; };
+
+        # If this is `true`, the cursor is temporarily hidden when typing.
+        hide_when_typing = true;
+
+        # Mouse bindings
+        #
+        # Mouse bindings are specified as a list of objects, much like the key
+        # bindings further below.
+        #
+        # Each mouse binding will specify a:
+        #
+        # - `mouse`:
+        #
+        #   - Middle
+        #   - Left
+        #   - Right
+        #   - Numeric identifier such as `5`
+        #
+        # - `action` (see key bindings)
+        #
+        # And optionally:
+        #
+        # - `mods` (see key bindings)
+        mouse_bindings = [
+          { mouse = "Middle"; action = "PasteSelection"; }
+        ];
+
+        url = {
+          # URL launcher
+          #
+          # This program is executed when clicking on a text which is
+          # recognized as a URL. The URL is always added to the
+          # command as the last parameter.
+          #
+          # When set to `None`, URL launching will be disabled
+          # completely.
+          #
+          # Default:
+          #   - (macOS) open
+          #   - (Linux) xdg-open
+          #   - (Windows) explorer
+          #launcher = {
+          #  program = "xdg-open";
+          #  args = [];
+          #};
+
+          # URL modifiers
+          #
+          # These are the modifiers that need to be held down for
+          # opening URLs when clicking on them. The available
+          # modifiers are documented in the key binding section.
+          modifiers = "Shift";
+        };
       };
 
       scrolling = {
@@ -77,7 +158,7 @@ in
         primary = {
           background = "0x1d1f21";
           foreground = "0xffffff";
-          bright_background = "0x1b1b1b";
+          # bright_background = "0x1b1b1b";
         };
 
         normal = {
@@ -125,15 +206,15 @@ in
       key_bindings = flatten [
         # Linux only
         (optionals isLinux [
-         { key = "V";        mods = "Control|Shift";   action = "Paste";             }
-         { key = "C";        mods = "Control|Shift";   action = "Copy";              }
-         { key = "Insert";   mods = "Shift";           action = "PasteSelection";    }
-         { key = "Key0";     mods = "Control";         action = "ResetFontSize";     }
-         { key = "Equals";   mods = "Control";         action = "IncreaseFontSize";  }
-         { key = "Plus";     mods = "Control";         action = "IncreaseFontSize";  }
-         { key = "Subtract"; mods = "Control";         action = "DecreaseFontSize";  }
-         { key = "Minus";    mods = "Control";         action = "DecreaseFontSize";  }
-         { key = "Return";   mods = "Alt";             action = "ToggleFullScreen";  }
+          { key = "V";        mods = "Control|Shift";   action = "Paste";             }
+          { key = "C";        mods = "Control|Shift";   action = "Copy";              }
+          { key = "Insert";   mods = "Shift";           action = "PasteSelection";    }
+          { key = "Key0";     mods = "Control";         action = "ResetFontSize";     }
+          { key = "Equals";   mods = "Control";         action = "IncreaseFontSize";  }
+          { key = "Plus";     mods = "Control";         action = "IncreaseFontSize";  }
+          { key = "Subtract"; mods = "Control";         action = "DecreaseFontSize";  }
+          { key = "Minus";    mods = "Control";         action = "DecreaseFontSize";  }
+          { key = "Return";   mods = "Alt";             action = "ToggleFullScreen";  }
         ])
 
         # (macOS only)
@@ -153,7 +234,7 @@ in
 
           { key = "C";        mods = "Alt";         action = "None";              }
           { key = "Equals";   mods = "Alt";         action = "None";              }
-          # { key = "F";        mods = "Alt|Control"; action = "None";              }
+          { key = "F";        mods = "Alt|Control"; action = "None";              }
           { key = "H";        mods = "Alt";         action = "None";              }
           { key = "K";        mods = "Alt";         action = "None";              }
           { key = "K";        mods = "Alt";         action = "None";              }
@@ -165,20 +246,19 @@ in
           { key = "V";        mods = "Alt";         action = "None";              }
           { key = "W";        mods = "Alt";         action = "None";              }
 
-          { key = "V";        mods = "Control|Shift";   action = "Paste";             }
-          { key = "C";        mods = "Control|Shift";   action = "Copy";              }
+          { key = "C"; mods = "Control|Shift"; action = "Copy"; }
+          { key = "V"; mods = "Control|Shift"; action = "Paste"; }
+
           { key = "Insert";   mods = "Shift";           action = "PasteSelection";    }
           { key = "Key0";     mods = "Control";         action = "ResetFontSize";     }
           { key = "Equals";   mods = "Control|Shift";   action = "IncreaseFontSize";  }
           { key = "Minus";    mods = "Control";         action = "DecreaseFontSize";  }
-          { key = "Return";   mods = "Alt";             action = "ToggleFullScreen";  }
+          { key = "Return";   mods = "Alt|Control";             action = "ToggleFullScreen";  }
 
           { key = "Grave";    mods = "Alt";         chars = "\\x1b`"; } # Alt + `
           { key = "Grave";    mods = "Alt|Shift";   chars = "\\x1b~"; } # Alt + `
 
-          { key = "N"; mods = "Alt|Shift"; action = "SpawnNewInstance"; }
-
-          { key = "X"; mods = "Alt"; chars = "\\x1bx"; }
+          { key = "N"; mods = "Command|Shift"; action = "SpawnNewInstance"; }
 
           # A-Z
 
@@ -242,12 +322,16 @@ in
           { key = "Comma";     mods = "Alt|Shift"; chars = "\\x1b<";     }
           { key = "Grave";     mods = "Alt";       chars = "\\x1b`";     }
           { key = "Grave";     mods = "Alt|Shift"; chars = "\\x1b~";     }
+
+          { key = "Slash";     mods = "Alt"; chars = "\\x1b/";     }
+
           { key = "Key0";      mods = "Alt";       chars = "\\x1b0";     }
           { key = "Key1";      mods = "Alt";       chars = "\\x1b1";     }
           { key = "Key2";      mods = "Alt";       chars = "\\x1b2";     }
           { key = "Key3";      mods = "Alt";       chars = "\\x1b3";     }
           { key = "Key3";      mods = "Alt|Shift"; chars = "\\x1b#";     }
           { key = "Key4";      mods = "Alt";       chars = "\\x1b4";     }
+          { key = "Key4";      mods = "Alt|Shift"; chars = "\\x1b$";     }
           { key = "Key5";      mods = "Alt";       chars = "\\x1b5";     }
           { key = "Key5";      mods = "Alt|Shift"; chars = "\\x1b%";     }
           { key = "Key6";      mods = "Alt";       chars = "\\x1b6";     }
@@ -256,17 +340,14 @@ in
           { key = "Key8";      mods = "Alt";       chars = "\\x1b8";     }
           { key = "Key8";      mods = "Alt|Shift"; chars = "\\x1b*";     }
           { key = "Key9";      mods = "Alt";       chars = "\\x1b9";     }
+
           { key = "LBracket";  mods = "Alt|Shift"; chars = "\\x1b{";     }
           { key = "Minus";     mods = "Alt|Shift"; chars = "\\x1b_";     }
           { key = "Period";    mods = "Alt";       chars = "\\x1b.";     }
           { key = "Period";    mods = "Alt|Shift"; chars = "\\x1b>";     }
           { key = "RBracket";  mods = "Alt|Shift"; chars = "\\x1b}";     }
-          # { key = "Space";     mods = "Control";       chars = "\\x00";      }
 
-          # { key = "Space";     mods = "Control|Alt";       chars= "\x1b[1;2B"; }
           { key = "Space"; mods = "Control|Alt"; chars = "\\x1b\\0"; }
-
-          # { key = "A"; mods ="Control|Alt"; chars= "\\x1ba"; }
         ])
 
         # { key = "N";        mods = "Alt|Shift";   action = "SpawnNewInstance";                     }
@@ -377,11 +458,6 @@ in
         # { key = "F11";      mods = "Super";           chars = "\\x1b[23;3~";                           }
         # { key = "F12";      mods = "Super";           chars = "\\x1b[24;3~";                           }
         # { key = "NumpadEnter";                        chars = "\n";                                    }
-
-        # # { key = "Back";       mods = "Alt"; chars = "\x1b\x7f"; }
-        # # { key = "Plus";     mods = "Control|Shift"; action = "IncreaseFontSize"; }
-        # { key = "Minus";     mods = "Control"; action = "DecreaseFontSize"; }
-
       ];
     };
   };
