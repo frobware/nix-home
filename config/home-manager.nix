@@ -7,5 +7,6 @@
     ./home-manager/tmux.nix
     ./home-manager/zsh.nix
     ./home-manager/alacritty.nix
+    ./home-manager/pinentry.nix
   ];
 }
