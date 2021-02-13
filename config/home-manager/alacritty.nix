@@ -112,7 +112,7 @@ in
       scrolling = {
         auto_scroll = false;
         faux_multiplier = 3;
-        history = 0;
+        history = 10000;
         multiplier = 3;
       };
 
