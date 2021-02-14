@@ -1,148 +1,624 @@
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty itself.
-env:
-  # TERM variable
-  #
-  # This value is used to set the `$TERM` environment variable for
-  # each instance of Alacritty. If it is not present, alacritty will
-  # check the local terminfo database and use `alacritty` if it is
-  # available, otherwise `xterm-256color` is used.
-  TERM: alacritty
-  
-# Live config reload (changes require restart)
-live_config_reload: true
-
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: true
-
-# Font configuration (changes require restart)
-font:
-  normal:
-    family: SF Mono
-    style: Light
-  bold:
-    family: SF Mono
-    style: Bold
-  italic:
-    family: SF Mono
-    style: Regular Italic
-  size: 24
-  use_thin_strokes: true
-
-colors:
-  primary:
-    background: '#1d1f21'
-    foreground: '#ffffff'
-  bright:
-   black:   '#666666'
-   red:     '#d54e53'
-   green:   '#b9ca4a'
-   yellow:  '#e7c547'
-   blue:    '#7aa6da'
-   magenta: '#c397d8'
-   cyan:    '#70c0b1'
-   white:   '#eaeaea'
-
-# A list with all available `key` names can be found here:
-# https://docs.rs/glutin/0.26.0/glutin/event/enum.VirtualKeyCode.html
-
-key_bindings:
- - { key: A,         mods: Command,       chars:  "\x1ba"          }
- - { key: B,         mods: Command,       chars:  "\x1bb"          }
- - { key: C,         mods: Command,       chars:  "\x1bc"          }
- - { key: D,         mods: Command,       chars:  "\x1bd"          }
- - { key: E,         mods: Command,       chars:  "\x1be"          }
- - { key: F,         mods: Command,       chars:  "\x1bf"          }
- - { key: G,         mods: Command,       chars:  "\x1bg"          }
- - { key: H,         mods: Command,       chars:  "\x1bh"          }
- - { key: I,         mods: Command,       chars:  "\x1bi"          }
- - { key: J,         mods: Command,       chars:  "\x1bj"          }
- - { key: K,         mods: Command,       chars:  "\x1bk"          }
- - { key: L,         mods: Command,       chars:  "\x1bl"          }
- - { key: M,         mods: Command,       chars:  "\x1bm"          }
- - { key: N,         mods: Command,       chars:  "\x1bn"          }
- - { key: O,         mods: Command,       chars:  "\x1bo"          }
- - { key: P,         mods: Command,       chars:  "\x1bp"          }
- - { key: Q,         mods: Command,       chars:  "\x1bq"          }
- - { key: R,         mods: Command,       chars:  "\x1br"          }
- - { key: S,         mods: Command,       chars:  "\x1bs"          }
- - { key: T,         mods: Command,       chars:  "\x1bt"          }
- - { key: U,         mods: Command,       chars:  "\x1bu"          }
- - { key: V,         mods: Command,       chars:  "\x1bv"          }
- - { key: W,         mods: Command,       chars:  "\x1bw"          }
- - { key: X,         mods: Command,       chars:  "\x1bx"          }
- - { key: Y,         mods: Command,       chars:  "\x1by"          }
- - { key: Z,         mods: Command,       chars:  "\x1bz"          }
- - { key: A,         mods: Command|Shift, chars:  "\x1bA"          }
- - { key: B,         mods: Command|Shift, chars:  "\x1bB"          }
- - { key: C,         mods: Command|Shift, chars:  "\x1bC"          }
- - { key: D,         mods: Command|Shift, chars:  "\x1bD"          }
- - { key: E,         mods: Command|Shift, chars:  "\x1bE"          }
- - { key: F,         mods: Command|Shift, chars:  "\x1bF"          }
- - { key: G,         mods: Command|Shift, chars:  "\x1bG"          }
- - { key: H,         mods: Command|Shift, chars:  "\x1bH"          }
- - { key: I,         mods: Command|Shift, chars:  "\x1bI"          }
- - { key: J,         mods: Command|Shift, chars:  "\x1bJ"          }
- - { key: K,         mods: Command|Shift, chars:  "\x1bK"          }
- - { key: L,         mods: Command|Shift, chars:  "\x1bL"          }
- - { key: M,         mods: Command|Shift, chars:  "\x1bM"          }
- - { key: N,         mods: Command|Shift, chars:  "\x1bN"          }
- - { key: O,         mods: Command|Shift, chars:  "\x1bO"          }
- - { key: P,         mods: Command|Shift, chars:  "\x1bP"          }
- - { key: Q,         mods: Command|Shift, chars:  "\x1bQ"          }
- - { key: R,         mods: Command|Shift, chars:  "\x1bR"          }
- - { key: S,         mods: Command|Shift, chars:  "\x1bS"          }
- - { key: T,         mods: Command|Shift, chars:  "\x1bT"          }
- - { key: U,         mods: Command|Shift, chars:  "\x1bU"          }
- - { key: V,         mods: Command|Shift, chars:  "\x1bV"          }
- - { key: W,         mods: Command|Shift, chars:  "\x1bW"          }
- - { key: X,         mods: Command|Shift, chars:  "\x1bX"          }
- - { key: Y,         mods: Command|Shift, chars:  "\x1bY"          }
- - { key: Z,         mods: Command|Shift, chars:  "\x1bZ"          }
-
- - { key: Back,      mods: Command,       chars:  "\x1b\x7f"       }
- - { key: Backslash, mods: Command,       chars:  "\x1b\\"         } # Command + \
- - { key: Backslash, mods: Command|Shift, chars:  "\x1b|"          } # Command + |
- - { key: Comma,     mods: Command|Shift, chars:  "\x1b<"          }
- - { key: Comma,     mods: Command|Shift, chars:  "\x1b<"          } # Command + <
- - { key: Equals,    mods: Control, action: IncreaseFontSize }
- - { key: Grave,     mods: Command,       chars:  "\x1b`"          } # Command + `
- - { key: Grave,     mods: Command|Shift, chars:  "\x1b~"          } # Command + ~
-
- # - { key: Key0,      mods: Command,       chars:  "\x1b0"          }
- # - { key: Key1,      mods: Command,       chars:  "\x1b1"          }
- # - { key: Key2,      mods: Command,       chars:  "\x1b2"          }
- # - { key: Key3,      mods: Command,       chars:  "\x1b3"          }
- # - { key: Key3,      mods: Command|Shift, chars:  "\x1b#"          }
- # - { key: Key3,      mods: Command|Shift, chars: "\x1b}"; }
- # - { key: Key4,      mods: Command,       chars:  "\x1b4"          }
- # - { key: Key4,      mods: Command,       chars:  "\x1b4"          }
- # - { key: Key5,      mods: Command,       chars:  "\x1b5"          }
- # - { key: Key5,      mods: Command,       chars:  "\x1b5"          }
- # - { key: Key5,      mods: Command|Shift, chars:  "\x1b%"          }
- # - { key: Key6,      mods: Command,       chars:  "\x1b6"          }
- # - { key: Key6,      mods: Command,       chars:  "\x1b6"          }
- # - { key: Key6,      mods: Command|Shift, chars:  "\x1b^"          } # Command + ^
- # - { key: Key7,      mods: Command,       chars:  "\x1b7"          }
- # - { key: Key7,      mods: Command,       chars:  "\x1b7"          }
- # - { key: Key8,      mods: Command,       chars:  "\x1b8"          }
- # - { key: Key8,      mods: Command,       chars:  "\x1b8"          }
- # - { key: Key8,      mods: Command|Shift, chars:  "\x1b*"          }
- # - { key: Key8,      mods: Command|Shift, chars:  "\x1b*"          } # Command + *
- # - { key: Key9,      mods: Command,       chars:  "\x1b9"          }
-
-
- - { key: LBracket,  mods: Command|Shift, chars:  "\x1b{"          }
- - { key: Minus,     mods: Command|Shift, chars:  "\x1b_"          } # Command + _
- - { key: Minus,     mods: Control, action: DecreaseFontSize }
- - { key: Period,    mods: Command,       chars:  "\x1b."          }
- - { key: Period,    mods: Command,       chars:  "\x1b."          } # Command + .
- - { key: Period,    mods: Command|Shift, chars:  "\x1b>"          }
- - { key: Period,    mods: Command|Shift, chars:  "\x1b>"          } # Command + >
- - { key: RBracket,  mods: Command|Shift, chars:  "\x1b}"          }
- - { key: Space,     mods: Control,       chars:  "\x00"           } # Ctrl    + Space
-
- - { key: fdjhfjdh,      mods: Command|Shift, chars:  "\x1b$"          }
-
-
+{
+  "alt_send_esc": true,
+  "background_opacity": 1,
+  "colors": {
+    "bright": {
+      "black": "0x555753",
+      "blue": "0x729fcf",
+      "cyan": "0x34e2e2",
+      "green": "0x8ae234",
+      "magenta": "0xad7fa8",
+      "red": "0xef2929",
+      "white": "0xeeeeec",
+      "yellow": "0xfce94f"
+    },
+    "indexed_colors": [],
+    "normal": {
+      "black": "0x2e3436",
+      "blue": "0x3465a4",
+      "cyan": "0x06989a",
+      "green": "0x4e9a06",
+      "magenta": "0x75507b",
+      "red": "0xcc0000",
+      "white": "0xd3d7cf",
+      "yellow": "0xc4a000"
+    },
+    "primary": {
+      "background": "0x1d1f21",
+      "foreground": "0xffffff"
+    }
+  },
+  "cursor": {
+    "style": "Block",
+    "unfocused_hollow": true
+  },
+  "decorations": "full",
+  "draw_bold_text_with_bright_colors": true,
+  "dynamic_title": true,
+  "enable_experimental_conpty_backend": false,
+  "font": {
+    "bold": {
+      "family": "SF Mono",
+      "style": "Bold"
+    },
+    "glyph_offset": {
+      "x": 0,
+      "y": 0
+    },
+    "italic": {
+      "family": "SF Mono",
+      "style": "Regular Italic"
+    },
+    "normal": {
+      "family": "SF Mono",
+      "style": "Light"
+    },
+    "offset": {
+      "x": 0,
+      "y": 0
+    },
+    "size": 20,
+    "use_thin_strokes": false
+  },
+  "key_bindings": [
+    {
+      "action": "None",
+      "key": "C",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "Equals",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "F",
+      "mods": "Alt|Control"
+    },
+    {
+      "action": "None",
+      "key": "H",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "K",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "K",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "Key0",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "Minus",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "N",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "Plus",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "Q",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "V",
+      "mods": "Alt"
+    },
+    {
+      "action": "None",
+      "key": "W",
+      "mods": "Alt"
+    },
+    {
+      "action": "Copy",
+      "key": "C",
+      "mods": "Control|Shift"
+    },
+    {
+      "action": "Paste",
+      "key": "V",
+      "mods": "Control|Shift"
+    },
+    {
+      "action": "PasteSelection",
+      "key": "Insert",
+      "mods": "Shift"
+    },
+    {
+      "action": "ResetFontSize",
+      "key": "Key0",
+      "mods": "Control"
+    },
+    {
+      "action": "IncreaseFontSize",
+      "key": "Equals",
+      "mods": "Control|Shift"
+    },
+    {
+      "action": "DecreaseFontSize",
+      "key": "Minus",
+      "mods": "Control"
+    },
+    {
+      "action": "ToggleFullScreen",
+      "key": "Return",
+      "mods": "Alt|Control"
+    },
+    {
+      "chars": "\u001b`",
+      "key": "Grave",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b~",
+      "key": "Grave",
+      "mods": "Alt|Shift"
+    },
+    {
+      "action": "SpawnNewInstance",
+      "key": "N",
+      "mods": "Command|Shift"
+    },
+    {
+      "chars": "\u001ba",
+      "key": "A",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bb",
+      "key": "B",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bc",
+      "key": "C",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bd",
+      "key": "D",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001be",
+      "key": "E",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bf",
+      "key": "F",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bg",
+      "key": "G",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bh",
+      "key": "H",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bi",
+      "key": "I",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bj",
+      "key": "J",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bk",
+      "key": "K",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bl",
+      "key": "L",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bm",
+      "key": "M",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bn",
+      "key": "N",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bo",
+      "key": "O",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bp",
+      "key": "P",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bq",
+      "key": "Q",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001br",
+      "key": "R",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bs",
+      "key": "S",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bt",
+      "key": "T",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bu",
+      "key": "U",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bv",
+      "key": "V",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bw",
+      "key": "W",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bx",
+      "key": "X",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001by",
+      "key": "Y",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bz",
+      "key": "Z",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001bA",
+      "key": "A",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bB",
+      "key": "B",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bC",
+      "key": "C",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bD",
+      "key": "D",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bE",
+      "key": "E",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bF",
+      "key": "F",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bG",
+      "key": "G",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bH",
+      "key": "H",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bI",
+      "key": "I",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bJ",
+      "key": "J",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bK",
+      "key": "K",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bL",
+      "key": "L",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bM",
+      "key": "M",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bN",
+      "key": "N",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bO",
+      "key": "O",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bP",
+      "key": "P",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bQ",
+      "key": "Q",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bR",
+      "key": "R",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bS",
+      "key": "S",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bT",
+      "key": "T",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bU",
+      "key": "U",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bV",
+      "key": "V",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bW",
+      "key": "W",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bX",
+      "key": "X",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bY",
+      "key": "Y",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001bZ",
+      "key": "Z",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b\u007f",
+      "key": "Back",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b\\",
+      "key": "Backslash",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b|",
+      "key": "Backslash",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b,",
+      "key": "Comma",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b<",
+      "key": "Comma",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b`",
+      "key": "Grave",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b~",
+      "key": "Grave",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b/",
+      "key": "Slash",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b0",
+      "key": "Key0",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b1",
+      "key": "Key1",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b2",
+      "key": "Key2",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b3",
+      "key": "Key3",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b#",
+      "key": "Key3",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b4",
+      "key": "Key4",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b$",
+      "key": "Key4",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b5",
+      "key": "Key5",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b%",
+      "key": "Key5",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b6",
+      "key": "Key6",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b^",
+      "key": "Key6",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b7",
+      "key": "Key7",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b8",
+      "key": "Key8",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b*",
+      "key": "Key8",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b9",
+      "key": "Key9",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b{",
+      "key": "LBracket",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b_",
+      "key": "Minus",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b.",
+      "key": "Period",
+      "mods": "Alt"
+    },
+    {
+      "chars": "\u001b>",
+      "key": "Period",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b}",
+      "key": "RBracket",
+      "mods": "Alt|Shift"
+    },
+    {
+      "chars": "\u001b\u0000",
+      "key": "Space",
+      "mods": "Control|Alt"
+    }
+  ],
+  "live_config_reload": true,
+  "mouse": {
+    "double_click": {
+      "threshold": 300
+    },
+    "hide_when_typing": true,
+    "mouse_bindings": [
+      {
+        "action": "PasteSelection",
+        "mouse": "Middle"
+      }
+    ],
+    "triple_click": {
+      "threshold": 300
+    },
+    "url": {
+      "modifiers": "Shift"
+    }
+  },
+  "scrolling": {
+    "auto_scroll": false,
+    "faux_multiplier": 3,
+    "history": 10000,
+    "multiplier": 3
+  },
+  "selection": {
+    "save_to_clipboard": true
+  },
+  "tabspaces": 8,
+  "window": {
+    "class": "Alacritty",
+    "dimensions": {
+      "columns": 0,
+      "lines": 0
+    },
+    "dynamic_padding": true,
+    "startup_mode": "Maximized",
+    "title": "Terminal"
+  }
+}
