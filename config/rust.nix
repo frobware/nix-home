@@ -15,6 +15,7 @@
     fd                          # find
     hyperfine                   # time
     procs                       # ps
+    ripgrep
     sd                          # sed
     tokei                       # wc -l
     xsv                         # csv

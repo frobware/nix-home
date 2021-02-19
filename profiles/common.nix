@@ -88,6 +88,7 @@ mkMerge [
       moreutils
       htop
       gnutar                    # required for kube development
+      gnugrep
     ];
 
     system.stateVersion = 4;
