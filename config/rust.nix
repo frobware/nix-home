@@ -9,7 +9,6 @@
 
     # Rust-based coreutils
     amber                       # sed/xargs
-    as-tree
     dust                        # du
     exa                         # ls
     fd                          # find
@@ -20,6 +19,5 @@
     tokei                       # wc -l
     xsv                         # csv
     zenith                      # top
-
   ];
 }
