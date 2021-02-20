@@ -64,6 +64,8 @@
       # if type -p oc >/dev/null 2>&1; then
       #     source <(oc completion zsh)
       # fi
+
+      PATH=$HOME/bin:$PATH
     '';
 
     initExtra = pkgs.lib.mkBefore ''
