@@ -16,7 +16,7 @@
     history.extended = true;
 
     history = {
-      size = 50000;
+      size = 500000;
       save = 5000000;
       path = "${dotDir}/history";
       ignoreDups = true;
@@ -30,7 +30,7 @@
       VISUAL = "emacsclient -c -a vi";
       LC_CTYPE = "en_US.UTF-8";
       LESS = "-FRSXM";
-      PROMPT = "$ %m %B%F{240}%4~%f%b\n$ ";
+      PROMPT = "%B%F{240}%4~%f%b\n$ ";
       RPROMPT = "";
       #PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
     };
