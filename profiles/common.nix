@@ -15,6 +15,8 @@ in
     ./users.nix
   ];
 
+  users.nix.configureBuildUsers = true;
+
   environment.pathsToLink = [ "/share/zsh" ];
 
   # programs.zsh = {
