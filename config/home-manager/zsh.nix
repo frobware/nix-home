@@ -30,7 +30,7 @@
       VISUAL = "emacsclient -c -a vi";
       LC_CTYPE = "en_US.UTF-8";
       LESS = "-FRSXM";
-      PROMPT = "%B%F{240}%4~%f%b\n$ ";
+      PROMPT = "%B%F{240}%8~%f%b\n$ ";
       RPROMPT = "";
       #PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
     };
