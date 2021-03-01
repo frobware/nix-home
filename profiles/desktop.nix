@@ -27,5 +27,6 @@ in
     gnupg
     podman
     diffutils
+    cmake
   ];
 }
