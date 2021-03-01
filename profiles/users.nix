@@ -13,8 +13,8 @@ in
 
 mkMerge [
   {
-    home-manager.users.amcdermo = homeManager;
-    users.users.amcdermo.home = mkIf isDarwin "/Users/amcdermo";
+    home-manager.users.aim = homeManager;
+    users.users.aim.home = mkIf isDarwin "/Users/aim";
   }
 
   (optionalAttrs isLinux {
@@ -23,6 +23,6 @@ mkMerge [
     home-manager.users.root = homeManager;
 
     # users.users.root.openssh.authorizedKeys.keys = authorizedKeys;
-    users.users.amcdermo = {};
+    users.users.aim = {};
   })
 ]

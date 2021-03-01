@@ -56,7 +56,7 @@
   documentation.info.enable = true;
   documentation.doc.enable = true;
 
-  home-manager.users.amcdermo = {
+  home-manager.users.aim = {
     programs.direnv.enable = true;
     programs.autojump.enable = true;
   };
