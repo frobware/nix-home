@@ -35,6 +35,12 @@
       #PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
     };
 
+    shellAliases = {
+      more = "less";
+      mkae = "make";
+      ll = "ls -l";
+    };
+
     profileExtra = ''
       # export GPG_TTY=$(tty)
       # if ! pgrep -x "gpg-agent" > /dev/null; then
