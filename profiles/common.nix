@@ -91,6 +91,7 @@ mkMerge [
       htop
       gnutar                    # required for kube development
       gnugrep
+      tshark
     ];
 
     system.stateVersion = 4;
