@@ -17,6 +17,7 @@
     ripgrep
     sd                          # sed
     tokei                       # wc -l
+    watchexec                   # used by emacs/straight
     xsv                         # csv
     zenith                      # top
   ];
