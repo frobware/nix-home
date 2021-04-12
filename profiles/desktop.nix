@@ -28,5 +28,6 @@ in
     podman
     diffutils
     cmake
+    openssl
   ];
 }
