@@ -316,6 +316,7 @@ in
           { key = "Z";         mods = "Alt|Shift"; chars = "\\x1bZ"; }
 
           { key = "Semicolon"; mods = "Alt"; chars = "\\x1b;"; }
+          { key = "Slash"; mods = "Alt|Shift"; chars = "\\x1b?"; }
 
           { key = "Back";      mods = "Alt";       chars = "\\x1b\\x7f"; }
           { key = "Backslash"; mods = "Alt";       chars = "\\x1b\\\\";  }
