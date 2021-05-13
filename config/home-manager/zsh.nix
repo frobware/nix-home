@@ -71,8 +71,8 @@
       #     source <(oc completion zsh)
       # fi
 
-      PATH=/usr/local/go/bin:$PATH
       PATH=$HOME/bin:$PATH
+      PATH=/usr/local/go/bin:$PATH
     '';
 
     initExtra = pkgs.lib.mkBefore ''
@@ -82,6 +82,8 @@
       # unset zle_bracketed_paste
       # export PS1='%m %~ $ '
       # fi
+      PATH=$HOME/bin:$PATH
+      PATH=/usr/local/go/bin:$PATH
     '';
   };
 }
