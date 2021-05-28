@@ -92,6 +92,7 @@ mkMerge [
       gnutar                    # required for kube development
       gnugrep
       tshark
+      wireguard-tools
     ];
 
     system.stateVersion = 4;
