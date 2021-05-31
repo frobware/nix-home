@@ -34,6 +34,10 @@ in
       #     - buttonless: Title bar, transparent background, but no title bar buttons
       decorations = "full";
 
+      env = {
+        TERM = "alacritty";
+      };
+
       window = {
         dimensions = {
           columns = 0;
@@ -81,7 +85,7 @@ in
           { mouse = "Middle"; action = "PasteSelection"; }
         ];
 
-        url = {
+        hints = {
           # URL launcher
           #
           # This program is executed when clicking on a text which is
@@ -120,20 +124,19 @@ in
 
       # Font configuration (changes require restart)
       font = {
-        normal = {
-          family = "SF Mono";
-          style = "Light";
-        };
+        # normal = {
+        #   family = "Menlo";
+        # };
 
-        bold = {
-          family = "SF Mono";
-          style = "Bold";
-        };
+        # bold = {
+        #   family = "Menlo";
+        #   style = "Bold";
+        # };
 
-        italic = {
-          family = "SF Mono";
-          style = "Regular Italic";
-        };
+        # italic = {
+        #   family = "Menlo";
+        #   style = "Regular Italic";
+        # };
 
         # Point size
         size = if isDarwin then 20.0 else 20.0;
@@ -343,8 +346,8 @@ in
           { key = "Key8";      mods = "Alt";       chars = "\\x1b8";     }
           { key = "Key8";      mods = "Alt|Shift"; chars = "\\x1b*";     }
           { key = "Key9";      mods = "Alt";       chars = "\\x1b9";     }
+          { key = "Key9";      mods = "Alt|Shift"; chars = "\\x1b(";     }
 
-          { key = "LBracket";  mods = "Alt|Shift"; chars = "\\x1b{";     }
           { key = "Minus";     mods = "Alt|Shift"; chars = "\\x1b_";     }
           { key = "Period";    mods = "Alt";       chars = "\\x1b.";     }
           { key = "Period";    mods = "Alt|Shift"; chars = "\\x1b>";     }
