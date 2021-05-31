@@ -538,6 +538,11 @@
       "mods": "Alt"
     },
     {
+      "chars": "\u001b&",
+      "key": "Key7",
+      "mods": "Alt|Shift"
+    },
+    {
       "chars": "\u001b8",
       "key": "Key8",
       "mods": "Alt"

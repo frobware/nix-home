@@ -343,6 +343,7 @@ in
           { key = "Key6";      mods = "Alt";       chars = "\\x1b6";     }
           { key = "Key6";      mods = "Alt|Shift"; chars = "\\x1b^";     }
           { key = "Key7";      mods = "Alt";       chars = "\\x1b7";     }
+          { key = "Key7";      mods = "Alt|Shift"; chars = "\\x1b&";     }
           { key = "Key8";      mods = "Alt";       chars = "\\x1b8";     }
           { key = "Key8";      mods = "Alt|Shift"; chars = "\\x1b*";     }
           { key = "Key9";      mods = "Alt";       chars = "\\x1b9";     }
