@@ -319,6 +319,8 @@ in
           { key = "Z";         mods = "Alt|Shift"; chars = "\\x1bZ"; }
 
           { key = "Semicolon"; mods = "Alt"; chars = "\\x1b;"; }
+          { key = "Semicolon"; mods = "Alt|Shift"; chars = "\\x1b:";     }
+
           { key = "Slash"; mods = "Alt|Shift"; chars = "\\x1b?"; }
 
           { key = "Back";      mods = "Alt";       chars = "\\x1b\\x7f"; }
@@ -332,27 +334,42 @@ in
           { key = "Slash";     mods = "Alt"; chars = "\\x1b/";     }
 
           { key = "Key0";      mods = "Alt";       chars = "\\x1b0";     }
+          { key = "Key0";      mods = "Alt|Shift"; chars = "\\x1b)";     }
+
           { key = "Key1";      mods = "Alt";       chars = "\\x1b1";     }
+          { key = "Key1";      mods = "Alt|Shift"; chars = "\\x1b!";     }
+
           { key = "Key2";      mods = "Alt";       chars = "\\x1b2";     }
+          { key = "Key2";      mods = "Alt|Shift"; chars = "\\x1b@";     }
+
           { key = "Key3";      mods = "Alt";       chars = "\\x1b3";     }
           { key = "Key3";      mods = "Alt|Shift"; chars = "\\x1b#";     }
+
           { key = "Key4";      mods = "Alt";       chars = "\\x1b4";     }
           { key = "Key4";      mods = "Alt|Shift"; chars = "\\x1b$";     }
+
           { key = "Key5";      mods = "Alt";       chars = "\\x1b5";     }
           { key = "Key5";      mods = "Alt|Shift"; chars = "\\x1b%";     }
+
           { key = "Key6";      mods = "Alt";       chars = "\\x1b6";     }
           { key = "Key6";      mods = "Alt|Shift"; chars = "\\x1b^";     }
+
           { key = "Key7";      mods = "Alt";       chars = "\\x1b7";     }
           { key = "Key7";      mods = "Alt|Shift"; chars = "\\x1b&";     }
+
           { key = "Key8";      mods = "Alt";       chars = "\\x1b8";     }
           { key = "Key8";      mods = "Alt|Shift"; chars = "\\x1b*";     }
+
           { key = "Key9";      mods = "Alt";       chars = "\\x1b9";     }
           { key = "Key9";      mods = "Alt|Shift"; chars = "\\x1b(";     }
 
           { key = "Minus";     mods = "Alt|Shift"; chars = "\\x1b_";     }
           { key = "Period";    mods = "Alt";       chars = "\\x1b.";     }
           { key = "Period";    mods = "Alt|Shift"; chars = "\\x1b>";     }
+
+          { key = "LBracket";  mods = "Alt|Shift"; chars = "\\x1b{";     }
           { key = "RBracket";  mods = "Alt|Shift"; chars = "\\x1b}";     }
+
 
           { key = "Space"; mods = "Control|Alt"; chars = "\\x1b\\0"; }
         ])
