@@ -32,6 +32,7 @@
       LESS = "-FRSXM";
       PROMPT = "%B%F{240}%8~%f%b\n$ ";
       RPROMPT = "";
+      MANWIDTH = "80";
       #PASSWORD_STORE_DIR = "${xdg.configHome}/password-store";
     };
 
