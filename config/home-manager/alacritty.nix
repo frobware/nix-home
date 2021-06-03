@@ -44,6 +44,11 @@ in
           lines = 0;
         };
 
+        padding = {
+          x = 5;
+          y = 5;
+        };
+
         class = "Alacritty";
         dynamic_padding = true;
         startup_mode = "Maximized";
