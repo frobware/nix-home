@@ -118,7 +118,7 @@ in {
 
     qt = {
       enable = true;
-      platformTheme = "gnome";  # for kdiff3
+      # platformTheme = "gnome";  # for kdiff3
     };
   };
 }
