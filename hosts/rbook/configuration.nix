@@ -57,6 +57,13 @@
   documentation.doc.enable = true;
 
   home-manager.users.aim = {
+    targets.darwin.defaults = {
+      "com.apple.desktopservices" = {
+        DSDontWriteNetworkStores = true;
+        DSDontWriteUSBStores = true;
+      };
+    };
+
     programs.direnv.enable = true;
     programs.autojump.enable = true;
   };
