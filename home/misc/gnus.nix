@@ -9,6 +9,13 @@ disable_plaintext_auth = no
 base_dir = ~/tmp
   '';
 
+  home.file.".config/gnus/score".text = ''
+(("extra"
+  ("amcdermo@redhat.com" nil nil s "To")
+  ("aos-network-edge-staff@redhat.com" nil nil s "To"))
+ (decay 737675))
+  '';
+
   home.file.".gnus.el".text = ''
 (use-package simple
   :custom (read-mail-command #'gnus))
