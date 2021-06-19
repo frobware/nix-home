@@ -39,7 +39,6 @@ mkMerge [
         jq
         less
         mercurial
-        mosh
         pass
         tmux
         vim

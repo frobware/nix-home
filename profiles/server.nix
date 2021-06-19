@@ -14,7 +14,7 @@
 
   networking.firewall.allowPing = true;
 
-  programs.mosh.enable = true;
+  programs.mosh.enable = false;
 
   services.openssh = {
     enable = true;
