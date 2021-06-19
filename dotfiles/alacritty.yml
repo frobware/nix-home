@@ -29,6 +29,7 @@
     }
   },
   "cursor": {
+    "blinking": false,
     "style": "Block",
     "unfocused_hollow": true
   },
@@ -61,11 +62,6 @@
       "action": "None",
       "key": "Equals",
       "mods": "Alt"
-    },
-    {
-      "action": "None",
-      "key": "F",
-      "mods": "Alt|Control"
     },
     {
       "action": "None",
@@ -433,6 +429,11 @@
       "mods": "Alt"
     },
     {
+      "chars": "\u001b:",
+      "key": "Semicolon",
+      "mods": "Alt|Shift"
+    },
+    {
       "chars": "\u001b?",
       "key": "Slash",
       "mods": "Alt|Shift"
@@ -483,14 +484,29 @@
       "mods": "Alt"
     },
     {
+      "chars": "\u001b)",
+      "key": "Key0",
+      "mods": "Alt|Shift"
+    },
+    {
       "chars": "\u001b1",
       "key": "Key1",
       "mods": "Alt"
     },
     {
+      "chars": "\u001b!",
+      "key": "Key1",
+      "mods": "Alt|Shift"
+    },
+    {
       "chars": "\u001b2",
       "key": "Key2",
       "mods": "Alt"
+    },
+    {
+      "chars": "\u001b@",
+      "key": "Key2",
+      "mods": "Alt|Shift"
     },
     {
       "chars": "\u001b3",
@@ -578,6 +594,11 @@
       "mods": "Alt|Shift"
     },
     {
+      "chars": "\u001b{",
+      "key": "LBracket",
+      "mods": "Alt|Shift"
+    },
+    {
       "chars": "\u001b}",
       "key": "RBracket",
       "mods": "Alt|Shift"
@@ -624,6 +645,10 @@
       "lines": 0
     },
     "dynamic_padding": true,
+    "padding": {
+      "x": 5,
+      "y": 5
+    },
     "startup_mode": "Maximized",
     "title": "Terminal"
   }
