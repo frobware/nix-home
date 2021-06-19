@@ -243,7 +243,6 @@ in
 
           { key = "C";        mods = "Alt";         action = "None";              }
           { key = "Equals";   mods = "Alt";         action = "None";              }
-          { key = "F";        mods = "Alt|Control"; action = "None";              }
           { key = "H";        mods = "Alt";         action = "None";              }
           { key = "K";        mods = "Alt";         action = "None";              }
           { key = "K";        mods = "Alt";         action = "None";              }
