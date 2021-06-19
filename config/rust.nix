@@ -2,12 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    rust-analyzer
-    clippy
-    cargo
-    rustc
-
-    # Rust-based coreutils
     amber                       # sed/xargs
     dust                        # du
     exa                         # ls
