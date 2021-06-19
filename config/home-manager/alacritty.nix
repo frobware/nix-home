@@ -35,7 +35,7 @@ in
       decorations = "full";
 
       env = {
-        TERM = "alacritty";
+        TERM = "alacritty-direct";
       };
 
       window = {
