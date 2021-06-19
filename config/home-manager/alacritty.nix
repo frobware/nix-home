@@ -205,6 +205,7 @@ in
       cursor = {
         style = "Block";
         unfocused_hollow = true;
+        blinking = false;
       };
 
       live_config_reload = true;
