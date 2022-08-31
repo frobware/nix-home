@@ -1,2 +1,0 @@
-switch:
-	home-manager switch
